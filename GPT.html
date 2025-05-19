@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>인공지능의 역사</title>
+  <style>
+    :root {
+      --primary-color: #2d89ef;
+      --secondary-color: #f2f2f2;
+      --text-color: #333;
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: white;
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+    header {
+      background: var(--primary-color);
+      color: white;
+      padding: 1rem 2rem;
+      text-align: center;
+    }
+    section {
+      padding: 2rem;
+    }
+    h2 {
+      color: var(--primary-color);
+      margin-top: 1.5rem;
+    }
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .card {
+      background: var(--secondary-color);
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    @media (min-width: 768px) {
+      .timeline {
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+      .card {
+        width: calc(50% - 2rem);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>인공지능의 역사</h1>
+    <p>컴퓨터 기술과 함께 진화해온 AI의 발자취</p>
+  </header>
+  
+  <section>
+    <h2>1. 인공지능의 정의와 필요 배경지식</h2>
+    <p><strong>인공지능(AI)</strong>은 인간의 학습, 추론, 문제 해결 능력을 기계가 흉내내도록 설계된 기술입니다. 이를 위해 컴퓨터 과학, 수학(특히 선형대수, 확률, 최적화), 언어학, 신경과학 등의 배경지식이 필요합니다.</p>
+  </section>
+
+  <section>
+    <h2>2. 컴퓨터 기술의 발전과 AI</h2>
+    <div class="timeline">
+      <div class="card">
+        <h3>1940년대 – 진공관 컴퓨터</h3>
+        <p>ENIAC과 같은 초기 컴퓨터는 진공관을 기반으로 했고, AI의 이론적 기반인 <strong>앨런 튜링</strong>의 튜링 기계 개념이 등장했습니다.</p>
+      </div>
+      <div class="card">
+        <h3>1956년 – 다트머스 회의</h3>
+        <p><strong>존 매카시</strong>가 "Artificial Intelligence"라는 용어를 처음 사용. AI 연구의 출발점.</p>
+      </div>
+      <div class="card">
+        <h3>1960~70년대 – 트랜지스터와 IC</h3>
+        <p>트랜지스터와 집적회로(IC)의 발전으로 컴퓨터 성능이 향상되어 초기 AI(전문 시스템, 규칙 기반 시스템) 개발이 가능해졌습니다.</p>
+      </div>
+      <div class="card">
+        <h3>1980~90년대 – 전문가 시스템과 PC 보급</h3>
+        <p>컴퓨터의 대중화로 전문가 시스템(EXPERT SYSTEM)이 산업계에 도입되었고, AI에 대한 기대와 한계가 교차하며 겨울기를 맞이합니다.</p>
+      </div>
+      <div class="card">
+        <h3>1997년 – IBM 딥블루 vs 카스파로프</h3>
+        <p>딥블루가 인간 세계 체스 챔피언을 이기며 AI의 실제 가능성이 입증되었습니다.</p>
+      </div>
+      <div class="card">
+        <h3>2000년대 – 인터넷과 빅데이터</h3>
+        <p>인터넷과 데이터 저장 기술의 급속한 발전은 <strong>머신러닝</strong>과 <strong>딥러닝</strong> 기술 발전을 가속화시켰습니다.</p>
+      </div>
+      <div class="card">
+        <h3>2012년 – 딥러닝의 부활</h3>
+        <p><strong>제프리 힌튼</strong>과 그의 제자들이 ILSVRC 대회에서 딥러닝 기반 이미지 인식 시스템으로 우승하며 대세로 부상.</p>
+      </div>
+      <div class="card">
+        <h3>2016년 – 알파고 vs 이세돌</h3>
+        <p>딥마인드(구글)의 <strong>알파고</strong>가 인간 바둑 챔피언을 꺾으며 AI의 상징적인 전환점을 보여줌.</p>
+      </div>
+      <div class="card">
+        <h3>2020년 이후 – 생성형 AI 시대</h3>
+        <p><strong>OpenAI</strong>의 GPT-3, GPT-4, 그리고 챗GPT의 등장으로 자연어처리와 창작 영역에서 AI의 영향력이 급속히 확장.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>3. 주요 인물과 조직</h2>
+    <ul>
+      <li><strong>앨런 튜링</strong>: 계산 가능성 이론과 AI의 철학적 기초를 제공한 선구자</li>
+      <li><strong>존 매카시</strong>: AI라는 용어의 창시자. 리스프 언어 개발</li>
+      <li><strong>제프리 힌튼</strong>: 딥러닝의 아버지. 역전파 알고리즘과 신경망 재부흥의 주역</li>
+      <li><strong>마빈 민스키</strong>: MIT AI 연구소 설립자. AI의 대중화에 기여</li>
+      <li><strong>OpenAI</strong>: 챗GPT 개발. 생성형 AI 대중화의 결정적 역할</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>4. 마무리 및 전망</h2>
+    <p>AI는 컴퓨터 기술 및 인터넷 발전의 맥락 속에서 성장해왔으며, 이제는 의료, 교육, 예술, 법률 등 다양한 분야에서 인간을 보조하거나 대체하는 단계에 진입했습니다. 앞으로의 AI는 윤리, 신뢰성, 인공지능 법제도와 같은 새로운 도전에 직면할 것입니다.</p>
+  </section>
+</body>
+</html>

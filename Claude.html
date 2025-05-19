@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>인공지능의 발전 역사: 컴퓨터 기술과 네트워크의 진화</title>
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --text-color: #333;
+            --light-bg: #f5f7fa;
+            --timeline-color: #2980b9;
+            --card-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #fff;
+            overflow-x: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            text-align: center;
+            padding: 3rem 1rem;
+            position: relative;
+        }
+        
+        .header-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .header-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;charset=utf8,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"%3E%3Cpolygon fill="rgba(255,255,255,0.05)" points="0,100 100,0 100,100"%3E%3C/polygon%3E%3C/svg%3E');
+            background-size: 100% 100%;
+        }
+        
+        nav {
+            background-color: var(--secondary-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1rem;
+        }
+        
+        .logo {
+            color: white;
+            font-size: 1.3rem;
+            font-weight: bold;
+            padding: 1rem 0;
+        }
+        
+        .nav-links {
+            display: flex;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 1rem;
+            display: block;
+            transition: background-color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+        
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        .intro {
+            background-color: var(--light-bg);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--card-shadow);
+        }
+        
+        .intro h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .intro p {
+            margin-bottom: 1rem;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 3rem auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--timeline-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            border-radius: 3px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -12px;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+            background-color: white;
+            border: 4px solid var(--timeline-color);
+        }
+        
+        .left {
+            left: 0;
+        }
+        
+        .right {
+            left: 50%;
+        }
+        
+        .right::after {
+            left: -12px;
+        }
+        
+        .timeline-content {
+            padding: 20px;
+            background-color: white;
+            position: relative;
+            border-radius: 8px;
+            box-shadow: var(--card-shadow);
+        }
+        
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            transition: transform 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .timeline-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-year {
+            position: absolute;
+            top: 15px;
+            width: 80px;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            background-color: var(--timeline-color);
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        
+        .left .timeline-year {
+            right: -100px;
+        }
+        
+        .right .timeline-year {
+            left: -100px;
+        }
+        
+        .concept-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid var(--primary-color);
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .concept-box h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .concept-box p {
+            margin-bottom: 0.5rem;
+        }
+        
+        .concept-box small {
+            display: block;
+            font-style: italic;
+            color: #666;
+        }
+        
+        .person-box {
+            display: flex;
+            background-color: #f0f7ff;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .person-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: #ddd;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+        
+        .person-img span {
+            font-size: 2rem;
+            color: #777;
+        }
+        
+        .person-info h4 {
+            margin-bottom: 0.3rem;
+            color: var(--secondary-color);
+        }
+        
+        .person-info p {
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+        
+        .accordion {
+            margin: 2rem 0;
+        }
+        
+        .accordion-item {
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+        }
+        
+        .accordion-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .accordion-header:hover {
+            background-color: #2980b9;
+        }
+        
+        .accordion-content {
+            background-color: white;
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        
+        .accordion-content-inner {
+            padding: 1rem;
+        }
+        
+        .active .accordion-content {
+            max-height: 1000px;
+        }
+        
+        .references {
+            background-color: var(--light-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-top: 3rem;
+        }
+        
+        .references h2 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .references ul {
+            list-style-position: inside;
+        }
+        
+        .references li {
+            margin-bottom: 0.5rem;
+        }
+        
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            font-size: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+        }
+        
+        /* 반응형 디자인 */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background-color: var(--secondary-color);
+            }
+            
+            .nav-links.show {
+                display: flex;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item::after {
+                left: 18px;
+                right: auto;
+            }
+            
+            .right {
+                left: 0;
+            }
+            
+            .left .timeline-year, .right .timeline-year {
+                left: -40px;
+                width: 60px;
+                font-size: 0.8rem;
+            }
+            
+            .person-box {
+                flex-direction: column;
+            }
+            
+            .person-img {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-bg"></div>
+        <div class="header-content">
+            <h1>인공지능의 발전 역사</h1>
+            <p>컴퓨터 기술과 네트워크의 진화로 살펴보는 AI의 여정</p>
+        </div>
+    </header>
+    
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">AI History</div>
+            <button class="hamburger">☰</button>
+            <div class="nav-links">
+                <a href="#intro">소개</a>
+                <a href="#1940s">1940년대</a>
+                <a href="#1950s">1950년대</a>
+                <a href="#1960s">1960년대</a>
+                <a href="#1970s">1970년대</a>
+                <a href="#1980s">1980년대</a>
+                <a href="#1990s">1990년대</a>
+                <a href="#2000s">2000년대</a>
+                <a href="#2010s">2010년대</a>
+                <a href="#present">현재와 미래</a>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <section id="intro" class="intro">
+            <h2>인공지능의 여정: 개요</h2>
+            <p>인공지능(Artificial Intelligence, AI)은 1940년대 컴퓨터의 탄생부터 오늘날 생성형 AI에 이르기까지, 하드웨어와 네트워크 기술의 발전과 함께 성장해왔습니다. 이 강의에서는 인공지능의 발전 역사를 컴퓨터 기술과 네트워크의 진화 맥락에서 살펴보고, 주요 인물과 획기적인 사건들을 통해 AI의 발전 과정을 이해할 것입니다.</p>
+            
+            <div class="concept-box">
+                <h4>인공지능(Artificial Intelligence)의 정의</h4>
+                <p>인공지능은 인간의 지능을 모방하여 학습, 추론, 문제 해결, 인식 등의 인지 기능을 수행할 수 있는 기계나 시스템을 의미합니다.</p>
+                <small>어원: 'artificial'(인위적인, 인공의)과 'intelligence'(지능)의 합성어로, 1956년 다트머스 회의에서 공식적으로 용어가 탄생했습니다.</small>
+            </div>
+            
+            <p>인공지능의 역사는 크게 다음과 같은 시기로 나누어 볼 수 있습니다:</p>
+            <ul>
+                <li><strong>태동기(1940-1950년대)</strong>: 컴퓨터의 탄생과 초기 AI 개념 정립</li>
+                <li><strong>초기 발전과 AI의 겨울(1960-1970년대)</strong>: 기대와 한계 직면</li>
+                <li><strong>재도약(1980-1990년대)</strong>: 새로운 접근법과 인터넷의 발전</li>
+                <li><strong>머신러닝과 딥러닝의 시대(2000-2010년대)</strong>: 데이터와 연산력의 혁명</li>
+                <li><strong>생성형 AI의 시대(2020년대~)</strong>: 일상 속의 인공지능</li>
+            </ul>
+        </section>
+        
+        <div class="timeline">
+            <div id="1940s" class="timeline-item left">
+                <div class="timeline-year">1940년대</div>
+                <div class="timeline-content">
+                    <h3>컴퓨터의 탄생과 초기 기술</h3>
+                    <p>1940년대는 현대 컴퓨터의 기초가 마련된 시기로, 인공지능 발전에 필수적인 하드웨어의 토대가 형성되었습니다.</p>
+                    
+                    <div class="concept-box">
+                        <h4>진공관(Vacuum Tube)</h4>
+                        <p>진공관은 초기 컴퓨터에서 전기 신호를 제어하고 증폭하는 역할을 했으며, 0과 1을 표현하는 스위치 역할을 수행했습니다.</p>
+                        <small>어원: 'vacuum'(진공)과 'tube'(관)의 합성어로, 내부가 진공 상태인 유리관을 의미합니다. 전기가 진공 상태에서 흐르는 특성을 활용합니다.</small>
+                        <p>예시: ENIAC(Electronic Numerical Integrator and Computer)은 18,000개의 진공관을 사용한 최초의 범용 전자식 컴퓨터였으며, 30톤의 무게에 초당 5,000번의 덧셈이 가능했습니다.</p>
+                    </div>
+                    
+                    <div class="person-box">
+                        <div class="person-img">
+                            <span>👨‍🔬</span>
+                        </div>
+                        <div class="person-info">
+                            <h4>존 폰 노이만(John von Neumann, 1903-1957)</h4>
+                            <p>헝가리 출신의 수학자로, '프로그램 내장식 컴퓨터' 구조를 제안했습니다. 현대 컴퓨터의 기본 구조인 '폰 노이만 아키텍처'는 프로그램과 데이터를 같은 메모리에 저장하는 방식으로, 오늘날 대부분의 컴퓨터가 이 구조를 따르고 있습니다.</p>
+                        </div>
+                    </div>
+                    
+                    <p>1947년, 벨 연구소의 윌리엄 쇼클리, 존 바딘, 월터 브래튼은 진공관을 대체할 트랜지스터를 발명했습니다. 이 발명은 인공지능 발전에 필수적인 소형화, 저전력, 고신뢰성 컴퓨터의 가능성을 열었습니다.</p>
+                    
+                    <div class="concept-box">
+                        <h4>트랜지스터(Transistor)</h4>
+                        <p>트랜지스터는 전기 신호를 증폭하거나 스위치 역할을 하는 반도체 소자로, 진공관보다 작고, 전력 소모가 적으며, 수명이 길었습니다.</p>
+                        <small>어원: 'transfer'(전달)와 'resistor'(저항기)의 합성어로, 전기 신호를 한 회로에서 다른 회로로 전달하는 기능을 의미합니다.</small>
+                        <p>예시: 초기 트랜지스터는 손가락만한 크기였지만, 현대 마이크로프로세서에는 수십억 개의 트랜지스터가 나노미터 크기로 집적되어 있습니다.</p>
+                    </div>
+                    
+                    <div class="person-box">
+                        <div class="person-img">
+                            <span>👨‍🔬</span>
+                        </div>
+                        <div class="person-info">
+                            <h4>윌리엄 쇼클리(William Shockley, 1910-1989)</h4>
+                            <p>미국의 물리학자이자 발명가로, 존 바딘, 월터 브래튼과 함께 트랜지스터를 발명해 1956년 노벨 물리학상을 수상했습니다. 후에 실리콘밸리의 시작점이 된 '쇼클리 반도체 연구소'를 설립했습니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="1950s" class="timeline-item right">
+                <div class="timeline-year">1950년대</div>
+                <div class="timeline-content">
+                    <h3>'인공지능'의 탄생과 초기 이론</h3>
+                    <p>1950년대는 '인공지능'이라는 용어가 공식적으로 등장하고, 첫 인공지능 프로그램이 개발된 중요한 시기입니다.</p>
+                    
+                    <div class="concept-box">
+                        <h4>튜링 테스트(Turing Test)</h4>
+                        <p>앨런 튜링이 1950년 제안한 기계의 지능을 측정하는 방법으로, 인간 판정자가 대화를 통해 상대방이 기계인지 인간인지 구별할 수 없다면 그 기계는 지능을 가졌다고 볼 수 있다는 개념입니다.</p>
+                        <small>어원: 제안자인 '앨런 튜링'의 이름에서 유래했으며, 원래는 '모방 게임(Imitation Game)'이라 불렸습니다.</small>
+                    </div>
+                    
+                    <div class="person-box">
+                        <div class="person-img">
+                            <span>👨‍🔬</span>
+                        </div>
+                        <div class="person-info">
+                            <h4>앨런 튜링(Alan Turing, 1912-1954)</h4>
+                            <p>영국의 수학자이자 컴퓨터 과학자로, 현대 컴퓨터의 이론적 기초를 마련했습니다. 2차 세계대전 중 독일 암호 해독에 크게 기여했으며, '생각하는 기계' 개념을 통해 인공지능의 철학적 기반을 제시했습니다.</p>
+                        </div>
+                    </div>
+                    
+                    <p>1956년 다트머스 회의(Dartmouth Conference)에서 존 매카시가 공식적으로 '인공지능(Artificial Intelligence)'이라는 용어를 처음 사용했습니다. 이 회의는 인공지능을 하나의 학문 분야로 확립하는 중요한 계기가 되었습니다.</p>
+                    
+                    <div class="person-box">
+                        <div class="person-img">
+                            <span>👨‍🏫</span>
+                        </div>
+                        <div class="person-info">
+                            <h4>존 매카시(John McCarthy, 1927-2011)</h4>
+                            <p>미국의 컴퓨터 과학자로, '인공지능'이라는 용어를 창안했습니다. 다트머스 회의를 조직했으며, 인공지능 프로그래밍 언어인 LISP를 개발했습니다. 1971년 튜링상을 수상했습니다.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="concept-box">
+                        <h4>기호주의(Symbolism)와 퍼셉트론(Perceptron)</h4>
+                        <p>1950년대 인공지능 연구는 두 가지 주요 접근법으로 나뉘었습니다:</p>
+                        <ul>
+                            <li><strong>기호주의</strong>: 인간의 지식을 규칙과 논리로 표현하는 방식으로, 명시적 지식 표현을 중시했습니다.</li>
+                            <li><strong>퍼셉트론</strong>: 프랭크 로젠블랏이 1957년 제안한 최초의 인공 신경망 모델로, 생물학적 뉴런에서 영감을 받아 학습이 가능한 알고리즘을 구현했습니다.</li>
+                        </ul>
+                        <small>퍼셉트론(Perceptron)의 어원: 'perceive'(인식하다)에서 파생된 용어로, 시각적 패턴을 인식하기 위해 설계되었습니다.</small>
+                    </div>
+                    
+                    <div class="person-box">
+                        <div class="person-img">
+                            <span>👨‍🔬</span>
+                        </div>
+                        <div class="person-info">
+                            <h4>프랭크 로젠블랏(Frank Rosenblatt, 1928-1971)</h4>
+                            <p>미국의 심리학자이자 컴퓨터 과학자로, 최초의 신경망 모델인 퍼셉트론을 개발했습니다. IBM 704 컴퓨터에서 퍼셉트론을 구현하여 단순한 패턴 인식 작업을 수행할 수 있음을 증명했습니다.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="person-box">
+                        <div class="person-img">
+                            <span>👨‍🔬</span>
+                        </div>
+                        <div class="person-info">
+                            <h4>아서 사무엘(Arthur Samuel, 1901-1990)</h4>
+                            <p>미국의 컴퓨터 과학자로, 1959년 '머신러닝(Machine Learning)'이라는 용어를 처음 사용했습니다. IBM에서 체커 게임을 스스로 학습하는 프로그램을 개발해 컴퓨터가 명시적 프로그래밍 없이도 학습할 수 있음을 보여주었습니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="1960s" class="timeline-item left">
+                <div class="timeline-year">1960년대</div>
+                <div class="timeline-content">
+                    <h3>인공지능의 첫 번째 겨울과 실리콘밸리의 탄생</h3>
+                    <p>1960년대는 인공지능에 대한 초기 낙관론이 한계에 부딪히며 '인공지능의 겨울'이 시작된 시기이지만, 동시에 현대 컴퓨터 산업의 토대가 마련된 중요한 시기이기도 합니다.</p>
+                    
+                    <div class="concept-box">
+                        <h4>XOR 문제와 인공지능의 첫 번째 겨울</h4>
+                        <p>마빈 민스키와 시모어 페퍼트는 1969년 저서 "퍼셉트론(Perceptrons)"에서 단층 퍼셉트론이 XOR(배타적 논리합) 문제를 해결할 수 없다는 것을 수학적으로 증명했습니다. 이는 신경망 연구에 큰 타격을 주었고, 연구 자금 지원이 축소되는 '인공지능의 겨울'이 시작되었습니다.</p>
+                        <small>XOR(Exclusive OR)의 어원: 'exclusive'(배타적)와 'OR'(논리합)의 합성어로, 두 입력 중 하나만 참일 때 참을 출력하는 논리 연산입니다.</small>
+                        <p>예시: XOR 연산의 특성 - (0,0)→0, (0,1)→1, (1,0)→1, (1,1)→0과 같은 비선형적 패턴은 단층 

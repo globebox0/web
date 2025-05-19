@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>인공지능의 숨가쁜 여정: 역사 강의</title>
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --text-color: #212529;
+            --card-background: #ffffff;
+            --accent-color: #17a2b8;
+            --timeline-line-color: #dee2e6;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            font-weight: 600;
+        }
+        header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .timeline-event {
+            background-color: var(--card-background);
+            border: 1px solid #e0e0e0;
+            border-left: 5px solid var(--primary-color);
+            padding: 25px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            opacity: 0; /* For scroll animation */
+            transform: translateY(20px); /* For scroll animation */
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out, box-shadow 0.3s ease;
+        }
+
+        .timeline-event:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform: translateY(15px) scale(1.01); /* Adjusted translateY for hover */
+        }
+
+        .timeline-event.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-event h2 {
+            color: var(--primary-color);
+            margin-top: 0;
+            font-size: 1.8em;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .timeline-event h3 {
+            color: var(--secondary-color);
+            font-size: 1.3em;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .key-concept {
+            background-color: #e9f5ff;
+            border: 1px solid #bde0fe;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        .key-concept strong {
+            color: var(--primary-color);
+        }
+
+        .person-org {
+            background-color: #f0fff0;
+            border-left: 3px solid #5cb85c;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 0.95em;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        ul li {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23007bff' class='bi bi-check-circle-fill' viewBox='0 0 16 16'%3E%3Cpath d='M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: 0 4px;
+            padding-left: 25px;
+            margin-bottom: 8px;
+        }
+
+        img.tech-icon {
+            width: 50px;
+            height: 50px;
+            float: right;
+            margin-left: 15px;
+            opacity: 0.7;
+        }
+
+        .summary-box {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            background-color: var(--secondary-color);
+            color: white;
+            font-size: 0.9em;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+            .timeline-event h2 {
+                font-size: 1.5em;
+            }
+            .timeline-event h3 {
+                font-size: 1.2em;
+            }
+            img.tech-icon {
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+            .container {
+                padding: 15px;
+            }
+            .timeline-event {
+                padding: 20px;
+            }
+            img.tech-icon {
+                display: none; /* Hide icons on very small screens to save space */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>인공지능의 숨가쁜 여정</h1>
+        <p>AI가 지금의 모습이 되기까지, 그 발전사를 탐험합니다.</p>
+    </header>
+
+    <div class="container">
+
+        <section class="timeline-event">
+            <h2>서론: 인공지능 탐험의 시작</h2>
+            <p>안녕하세요! 오늘 우리는 인공지능(AI)이라는 매혹적인 분야의 역사를 함께 살펴볼 것입니다. AI가 단순한 공상과학 소설 속 개념에서 우리 삶의 필수적인 부분으로 자리 잡기까지, 그 흥미진진한 여정을 따라가 봅시다. 이 강의를 통해 여러분은 다음 내용을 이해하게 될 것입니다:</p>
+            <ul>
+                <li>AI 발전의 기초가 된 핵심 컴퓨터 및 네트워크 기술</li>
+                <li>AI 역사 속 중요한 사건, 인물, 그리고 조직</li>
+                <li>AI의 '겨울'과 부활, 그리고 현재의 생성형 AI 시대</li>
+            </ul>
+            <p>기술적인 깊이는 조절하여, 편안하게 즐기실 수 있도록 준비했습니다. 자, 인공지능 역사의 문을 활짝 열어볼까요?</p>
+        </section>
+
+        <section class="timeline-event">
+            <h2>1940년대: AI의 씨앗 – 컴퓨터의 탄생</h2>
+            <p>인공지능의 역사는 사실상 현대 컴퓨터의 탄생과 함께 시작됩니다. 이 시기에는 AI라는 용어는 없었지만, 지능적인 기계를 향한 기초가 마련되었습니다.</p>
+
+            <h3>핵심 기술: 스위치와 진공관</h3>
+            <div class="key-concept">
+                <strong>스위치 (Switch):</strong> 모든 디지털 컴퓨터의 기본 원리입니다. 켜짐(ON, '1')과 꺼짐(OFF, '0') 상태를 통해 정보를 표현하고 연산을 수행합니다. 우리가 일상에서 사용하는 전등 스위치와 원리는 같지만, 컴퓨터에서는 이 스위칭이 극도로 빠르게 이루어집니다. 전원 버튼의 '⌽' 기호는 '0'과 '1'을 합친 모양입니다!
+            </div>
+            <p>초기 컴퓨터에서 이 스위치 역할을 한 것이 바로 <strong>진공관(Vacuum Tube)</strong>입니다. 진공관은 전류의 흐름을 제어하여 0과 1을 표현했습니다.</p>
+            
+            <div class="person-org">
+                <strong>ENIAC (Electronic Numerical Integrator and Computer):</strong> 1946년에 공개된 최초의 대규모 전자식 컴퓨터 중 하나입니다. 약 17,468개의 진공관을 사용했으며, 주로 탄도 계산에 활용되었습니다. 크기가 방대하고 전력 소모가 엄청났으며, 고장이 잦았습니다.
+            </div>
+            <p>그러나 진공관은 크고, 전기를 많이 소비하며, 열이 많이 나고, 쉽게 고장 나는 단점이 있었습니다. 이는 초기 AI 연구의 전기 소모가 크다는 이야기의 시초가 되기도 했습니다.</p>
+
+            <h3>중요한 발명: 트랜지스터</h3>
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' fill='%236c757d' viewBox='0 0 256 256'%3E%3Cpath d='M216,88H176V40a8,8,0,0,0-8-8H88a8,8,0,0,0-8,8V88H40a8,8,0,0,0-8,8v80a8,8,0,0,0,8,8H80v40a8,8,0,0,0,8,8h80a8,8,0,0,0,8-8V184h40a8,8,0,0,0,8-8V96A8,8,0,0,0,216,88ZM96,48h64V88H96Zm64,160H96V136h64Zm48-48H176V136a8,8,0,0,0-8-8H88a8,8,0,0,0-8,8v24H48V104H80a8,8,0,0,0,8-8V48a8,8,0,0,0,3.36-6.4l.05-.17A15.83,15.83,0,0,1,80,40h0V96a8,8,0,0,0,8,8h80a8,8,0,0,0,8-8V48h0a15.83,15.83,0,0,1-11.41.17l-.05.17A8,8,0,0,0,160,48V96a8,8,0,0,0,8,8h32Z'/%3E%3C/svg%3E" alt="Transistor Icon" class="tech-icon">
+            <p>1947년, 벨 연구소의 존 바딘, 월터 브래튼, 윌리엄 쇼클리는 <strong>트랜지스터(Transistor)</strong>를 발명합니다. 이는 진공관을 대체할 혁명적인 발명으로, 훨씬 작고, 안정적이며, 전력 소모가 적었습니다. 이 공로로 세 사람은 1956년 노벨 물리학상을 수상합니다.</p>
+            <div class="person-org">
+                <strong>벨 연구소 (Bell Labs):</strong> 20세기 과학 기술 혁신의 산실. 트랜지스터 외에도 레이저, 유닉스 운영체제, C 프로그래밍 언어 등 수많은 중요 발명품이 탄생한 곳입니다.
+            </div>
+            <p>빌 게이츠가 "타임머신이 있다면 트랜지스터 시연 현장으로 가고 싶다"고 말했을 정도로, 트랜지스터는 현대 전자공학 및 컴퓨터 과학의 초석이 되었습니다.</p>
+        </section>
+
+        <section class="timeline-event">
+            <h2>1950년대: '인공지능'의 탄생과 초기 접근법</h2>
+            <p>트랜지스터 기반 컴퓨터가 등장하면서, 기계가 '생각'할 수 있을지에 대한 본격적인 논의가 시작되었습니다.</p>
+
+            <h3>다트머스 회의와 '인공지능' 용어의 등장</h3>
+            <p>1956년, 미국 다트머스 대학에서 열린 워크숍에서 <strong>'인공지능(Artificial Intelligence, AI)'</strong>이라는 용어가 처음으로 공식 사용되었습니다. 이 회의는 AI 연구 분야의 탄생을 알리는 역사적인 사건으로 평가받습니다.</p>
+            <div class="person-org">
+                <strong>다트머스 회의 주요 참석자:</strong>
+                <ul>
+                    <li><strong>존 매카시 (John McCarthy):</strong> AI 용어 창시자, LISP 프로그래밍 언어 개발.</li>
+                    <li><strong>마빈 민스키 (Marvin Minsky):</strong> MIT AI Lab 공동 설립자, 인지과학 및 AI 연구의 선구자.</li>
+                    <li><strong>클로드 섀넌 (Claude Shannon):</strong> 정보 이론의 아버지.</li>
+                    <li><strong>너새니얼 로체스터 (Nathaniel Rochester):</strong> IBM 701 컴퓨터 설계자.</li>
+                </ul>
+            </div>
+
+            <h3>초기 AI 접근법: 기호주의 vs. 연결주의</h3>
+            <p>이 시기 AI 연구는 크게 두 가지 흐름으로 나뉘었습니다.</p>
+            <div class="key-concept">
+                <strong>기호주의 (Symbolic AI / GOFAI - Good Old-Fashioned AI):</strong> 인간의 지능을 논리적 규칙과 기호 조작으로 구현하려는 접근법입니다. 인간의 지식과 추론 과정을 컴퓨터 프로그램으로 명시적으로 표현하고자 했습니다. (예: 논리 기반 문제 해결, 전문가 시스템)
+            </div>
+            <div class="key-concept">
+                <strong>연결주의 (Connectionism):</strong> 인간의 뇌 신경망 구조에서 영감을 받아, 단순한 처리 장치(뉴런)들을 상호 연결하고 학습을 통해 지능을 구현하려는 접근법입니다.
+            </div>
+            
+            <p>연결주의의 대표적인 예가 1957년 프랑크 로젠블랫이 고안한 <strong>퍼셉트론(Perceptron)</strong>입니다.</p>
+            <div class="person-org">
+                <strong>프랑크 로젠블랫 (Frank Rosenblatt):</strong> 코넬 항공 연구소의 심리학자로, 퍼셉트론을 개발하여 패턴 인식 가능성을 제시했습니다. 그는 IBM 704 컴퓨터를 사용하여 퍼셉트론을 실제로 구현했습니다.
+                <strong>IBM 704:</strong> 최초의 대량 생산 컴퓨터이자 부동소수점 연산이 가능했던 컴퓨터로, 초기 AI 연구에 널리 사용되었습니다.
+            </div>
+            <p>퍼셉트론은 입력값에 가중치를 곱하고 합산한 결과를 임계값과 비교하여 출력을 결정하는 간단한 모델로, 오늘날 신경망의 기본 단위인 인공 뉴런의 초기 형태입니다.</p>
+
+            <h3>'머신러닝' 용어의 등장</h3>
+            <p>1959년, IBM의 아서 새뮤얼은 컴퓨터가 명시적으로 프로그래밍되지 않고도 학습할 수 있는 능력을 연구하며 <strong>'머신러닝(Machine Learning)'</strong>이라는 용어를 처음 사용했습니다. 그는 체커 게임 프로그램을 개발하여 컴퓨터가 스스로 게임을 학습하고 실력을 향상시키는 것을 보여주었습니다.</p>
+             <div class="person-org">
+                <strong>아서 새뮤얼 (Arthur Samuel):</strong> IBM 연구원으로, 머신러닝 분야의 선구자. 그의 체커 프로그램은 AI가 경험을 통해 학습할 수 있음을 보여준 초기 사례입니다.
+            </div>
+        </section>
+        
+        <section class="timeline-event">
+            <h2>1960년대: 첫 번째 'AI 겨울'과 기술적 토대 마련</h2>
+            <p>초기 AI에 대한 높은 기대감은 곧 한계에 부딪히며 연구 자금 지원이 줄어드는 'AI 겨울'로 이어집니다. 하지만 이 시기에도 정보 기술 분야에서는 중요한 발전이 있었습니다.</p>
+
+            <h3>퍼셉트론의 한계와 AI 겨울</h3>
+            <p>1969년, 마빈 민스키와 시모어 페퍼트는 저서 "퍼셉트론"에서 단층 퍼셉트론(Single-layer Perceptron)이 <strong>XOR 문제</strong>와 같은 비선형적인 문제를 해결할 수 없음을 수학적으로 증명했습니다. 이는 당시 퍼셉트론에 대한 과도한 기대를 꺾고 AI 연구 전반에 대한 회의론을 확산시키는 계기가 되었습니다.</p>
+            <div class="key-concept">
+                <strong>XOR (Exclusive OR) 문제:</strong> 두 입력이 서로 다를 때만 1을 출력하는 간단한 논리 연산. 단층 퍼셉트론은 선형 분리만 가능하기 때문에 XOR 문제를 해결할 수 없습니다. 이는 다층 퍼셉트론의 필요성을 암시했습니다.
+            </div>
+            <p>이와 더불어, 영국 정부의 라이트힐 보고서(Lighthill Report) 등 AI 연구의 실질적 성과 부족을 지적하는 평가들이 나오면서, 정부와 기업의 AI 연구 자금 지원이 대폭 축소되었습니다. 이를 <strong>첫 번째 'AI 겨울(AI Winter)'</strong>이라고 부릅니다.</p>
+
+            <h3>하드웨어 혁신: 집적회로(IC)와 실리콘밸리의 태동</h3>
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' fill='%236c757d' viewBox='0 0 16 16'%3E%3Cpath d='M4.502 11.5H2.25c-.31-.31-.41-.31-.55-.31L1.65 11c0-.04.1-.04.19-.04.29 0 .49.19.68.38.19.19.29.48.29.78 0 .29-.09.58-.28.78-.19.19-.48.29-.78.29-.29 0-.58-.09-.78-.28-.19-.19-.29-.48-.29-.78 0-.05.01-.09.01-.14L0 11.5v-1A1.5 1.5 0 0 1 1.5 9h13A1.5 1.5 0 0 1 16 10.5v1l-.05.14c.01.05.01.09.01.14 0 .29-.09.58-.28.78-.19.19-.48.29-.78.29-.29 0-.58-.09-.78-.28-.19-.19-.29-.48-.29-.78 0-.29.09-.58.28-.78.19-.19.48-.29.78-.29.09 0 .19 0 .19.04l.05.05c-.14 0-.24 0-.55.31h-2.25v1.5a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-1.5zM1.023 3.577A.5.5 0 0 1 1.5 3h13a.5.5 0 0 1 .477.577l-2.25 8.5a.5.5 0 0 1-.477.423H3.75a.5.5 0 0 1-.477-.423l-2.25-8.5zM2.755 4l1.5 5.5h7.49l1.5-5.5h-10.49z'/%3E%3C/svg%3E" alt="IC Chip Icon" class="tech-icon">
+            <p>AI 연구는 주춤했지만, 컴퓨터 하드웨어 기술은 계속 발전했습니다. 1958년 텍사스 인스트루먼트의 잭 킬비와 페어차일드 반도체의 로버트 노이스가 거의 동시에 <strong>집적회로(Integrated Circuit, IC)</strong>, 즉 '칩(Chip)'을 발명했습니다. IC는 하나의 작은 실리콘 조각 위에 트랜지스터, 저항, 커패시터 등 여러 전자 부품을 집적한 것으로, 컴퓨터의 소형화, 고성능화, 저가격화에 결정적인 역할을 했습니다.</p>
+            <div class="person-org">
+                <strong>윌리엄 쇼클리 (William Shockley):</strong> 트랜지스터 발명가 중 한 명으로, 벨 연구소를 나와 캘리포니아 마운틴뷰에 '쇼클리 반도체 연구소'를 설립했습니다. 그의 괴팍한 성격으로 인해 핵심 연구원 8명("배신자 8인, Traitorous Eight")이 퇴사하여 '페어차일드 반도체(Fairchild Semiconductor)'를 설립했고, 여기서 다시 인텔(Intel), AMD 등 수많은 반도체 기업이 파생되면서 <strong>실리콘밸리(Silicon Valley)</strong>가 탄생하는 계기가 되었습니다.
+            </div>
+            <p>IBM은 1959년 트랜지스터 기반의 상업용 컴퓨터 <strong>IBM 1401</strong>을 출시하여 큰 성공을 거둡니다. 이 모델은 이전 진공관 컴퓨터에 비해 크기가 작고 가격도 저렴해져 컴퓨터 보급에 기여했습니다. (참고: 우리나라 최초의 컴퓨터도 이 IBM 1401 모델입니다.)</p>
+
+            <h3>네트워크 혁신: 인터넷의 기원, 알파넷</h3>
+            <p>1969년, 미국 국방부 산하 고등연구계획국(ARPA, 이후 DARPA)의 주도로 <strong>알파넷(ARPANET)</strong>이 구축되었습니다. 이는 냉전 시대 핵 공격에도 정보 시스템이 마비되지 않도록 여러 컴퓨터를 분산 연결하는 연구에서 시작되었습니다.</p>
+            <div class="key-concept">
+                <strong>패킷 스위칭 (Packet Switching):</strong> 데이터를 작은 '패킷' 단위로 나누어 전송하고, 목적지에서 재조립하는 방식입니다. 회선을 독점하지 않아 효율적이고, 일부 경로가 파괴되어도 다른 경로로 우회할 수 있어 견고합니다. 이는 인터넷의 핵심 기술입니다.
+            </div>
+            <p>알파넷은 이후 인터넷으로 발전하며, AI 학습에 필요한 방대한 데이터를 공유하고 전송하는 인프라의 초석이 됩니다.</p>
+        </section>
+
+        <section class="timeline-event">
+            <h2>1970-1980년대: AI 겨울의 지속과 새로운 희망</h2>
+            <p>AI 연구는 여전히 어려운 시기를 겪었지만, 컴퓨터 기술은 꾸준히 발전했고, AI 분야에서도 새로운 돌파구가 마련되기 시작했습니다.</p>
+            
+            <h3>하드웨어 발전: 마이크로프로세서와 D-RAM</h3>
+            <p>1971년, 인텔은 최초의 상업용 <strong>마이크로프로세서(Microprocessor)</strong>인 '인텔 4004'를 출시합니다. 마이크로프로세서는 CPU의 모든 기능을 하나의 칩에 집적한 것으로, 개인용 컴퓨터(PC) 시대를 여는 핵심 부품이 됩니다. 또한, 이 시기에는 주기억장치로 사용되는 <strong>D-RAM(Dynamic Random Access Memory)</strong> 기술도 발전하여 컴퓨터 성능 향상에 기여했습니다.</p>
+            <div class="person-org">
+                <strong>인텔 (Intel):</strong> 1968년 로버트 노이스와 고든 무어가 설립. 마이크로프로세서와 메모리 반도체 분야를 선도하며 PC 혁명을 이끌었습니다. ("Intel Inside")
+            </div>
+            
+            <h3>AI의 부활 조짐: 역전파 알고리즘</h3>
+            <p>1980년대 중반, AI 연구에 다시 봄이 찾아올 기미가 보였습니다. 가장 중요한 발전은 <strong>역전파(Backpropagation)</strong> 알고리즘의 재발견과 보급입니다.</p>
+            <div class="key-concept">
+                <strong>다층 퍼셉트론 (Multi-Layer Perceptron, MLP):</strong> 입력층과 출력층 사이에 하나 이상의 은닉층(hidden layer)을 추가한 신경망입니다. 이를 통해 XOR 문제와 같은 비선형 문제를 해결할 수 있게 됩니다.
+                <strong>역전파 (Backpropagation):</strong> 다층 신경망을 효과적으로 학습시키는 알고리즘입니다. 출력층에서 발생한 오차(error)를 입력층 방향으로 역으로 전파하면서 각 연결 가중치를 조정합니다.
+            </div>
+            <p>1986년, 제프리 힌튼, 데이비드 룸멜하트, 로널드 윌리엄스는 역전파 알고리즘이 다층 신경망 학습에 효과적임을 보였습니다. 이는 신경망 연구에 다시 활기를 불어넣었습니다.</p>
+            <div class="person-org">
+                <strong>제프리 힌튼 (Geoffrey Hinton):</strong> "딥러닝의 대부" 중 한 명. 역전파 알고리즘 보급과 딥러닝 연구에 지대한 공헌을 했습니다.
+            </div>
+            <p>하지만, 역전파도 신경망의 층(layer)이 깊어질수록 학습이 어려워지는 문제(기울기 소실/폭주 문제, Vanishing/Exploding Gradient Problem)에 직면하며 또 한 번의 침체기를 맞을 뻔했습니다.</p>
+
+            <h3>CNN의 등장</h3>
+            <p>1989년, 얀 르쿤은 <strong>합성곱 신경망(Convolutional Neural Network, CNN)</strong>을 손글씨 숫자 인식(우편번호 자동 인식 등)에 성공적으로 적용한 연구(LeNet-5)를 발표합니다. CNN은 이미지의 지역적 특징을 효과적으로 추출하고 학습할 수 있어, 이후 이미지 인식 분야에서 핵심적인 기술로 자리 잡습니다.</p>
+            <div class="person-org">
+                <strong>얀 르쿤 (Yann LeCun):</strong> "딥러닝의 대부" 중 한 명. CNN 개발의 선구자로, 현재 Meta AI의 수석 과학자입니다.
+            </div>
+            <p>한편, 1984년부터는 휴대전화 서비스가 본격적으로 시작되며 이동통신 시대가 열렸고, 이는 미래의 모바일 AI를 위한 기반이 됩니다.</p>
+        </section>
+
+        <section class="timeline-event">
+            <h2>1990년대-2000년대: 인터넷 혁명과 GPU의 등장, 빅데이터 시대</h2>
+            <p>인터넷의 폭발적인 성장과 하드웨어의 발전은 AI 연구에 새로운 기회를 제공했습니다.</p>
+            
+            <h3>인터넷의 대중화와 데이터의 축적</h3>
+            <p>1990년대는 <strong>월드 와이드 웹(World Wide Web, WWW)</strong>의 등장과 함께 인터넷이 대중화된 시기입니다. 팀 버너스리가 1989년 CERN에서 WWW를 고안했고, 1991년 일반에 공개되었습니다. 야후(1994), 구글(1998)과 같은 검색 엔진이 등장하면서 방대한 정보에 대한 접근성이 높아졌습니다.</p>
+            <div class="person-org">
+                <strong>팀 버너스리 (Tim Berners-Lee):</strong> WWW의 창시자. HTTP, HTML, URL 등의 핵심 기술을 개발했습니다.
+                <strong>구글 (Google):</strong> 래리 페이지와 세르게이 브린이 설립. 페이지랭크 알고리즘을 기반으로 한 강력한 검색 엔진으로 인터넷 정보 검색의 표준이 되었습니다.
+            </div>
+            <p>인터넷의 확산은 엄청난 양의 <strong>빅데이터(Big Data)</strong>를 생성했고, 이는 머신러닝 모델, 특히 딥러닝 모델을 학습시키는 데 필수적인 자원이 됩니다.</p>
+
+            <h3>GPU의 혁신: 병렬 처리의 힘</h3>
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' fill='%236c757d' viewBox='0 0 16 16'%3E%3Cpath d='M4 14a1 1 0 0 1-.64-.23L.13 9.12a1.25 1.25 0 0 1 0-1.55L3.36.4A1.01 1.01 0 0 1 4 0h8a1.01 1.01 0 0 1 .64.4l3.23 4.17a1.25 1.25 0 0 1 0 1.55l-3.23 4.65A1 1 0 0 1 12 11H4a1 1 0 0 1-.64-.23zM2.56 8.88l1.439 1.874h7.998l1.44-1.874L10.77 2.13H5.228L2.561 8.88z'/%3E%3Cpath d='M14 12.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm-3-5a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0zM2 12.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zM5 7.5a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0zM8.5 6a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0z'/%3E%3Cpath d='M6 3.5a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0zm4 0a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0z'/%3E%3C/svg%3E" alt="GPU Icon" class="tech-icon">
+            <p>1999년, 엔비디아(NVIDIA)는 최초의 <strong>GPU(Graphics Processing Unit, 그래픽 처리 장치)</strong>인 '지포스 256'을 선보입니다. GPU는 원래 3D 그래픽 처리를 위해 설계되었지만, 수많은 코어를 활용한 병렬 연산 능력 덕분에 복잡한 수학 연산이 많은 딥러닝 학습에 매우 효과적임이 밝혀졌습니다. GPU의 등장은 딥러닝의 부흥을 가능하게 한 핵심적인 하드웨어 발전입니다.</p>
+            <div class="person-org">
+                <strong>엔비디아 (NVIDIA):</strong> 젠슨 황 등이 1993년 설립. GPU 시장의 선두 주자로, AI 및 고성능 컴퓨팅 분야에서 핵심적인 역할을 하고 있습니다.
+            </div>
+            
+            <h3>대규모 데이터셋의 구축</h3>
+            <p>2000년대 후반, 페이페이 리 스탠퍼드대 교수가 주도한 <strong>이미지넷(ImageNet)</strong> 프로젝트는 1,400만 장 이상의 레이블링된 이미지를 포함하는 대규모 데이터셋을 구축했습니다. 이는 딥러닝 모델, 특히 CNN의 성능을 비약적으로 발전시키는 데 결정적인 역할을 했습니다.</p>
+            <div class="person-org">
+                <strong>페이페이 리 (Fei-Fei Li):</strong> 이미지넷 프로젝트를 이끈 AI 연구자. 대규모 고품질 데이터셋의 중요성을 강조하며 딥러닝 발전에 기여했습니다.
+            </div>
+        </section>
+
+        <section class="timeline-event">
+            <h2>2010년대: 딥러닝의 황금기와 AI의 대중화</h2>
+            <p>빅데이터, GPU, 그리고 발전된 알고리즘의 결합으로 딥러닝은 전성기를 맞이하며 AI 기술이 대중에게도 널리 알려지기 시작합니다.</p>
+
+            <h3>딥러닝의 돌풍: 알렉스넷과 이미지넷 챌린지</h3>
+            <p>2012년, 이미지넷 대규모 시각 인식 챌린지(ILSVRC)에서 제프리 힌튼 교수팀의 <strong>알렉스넷(AlexNet)</strong>이 딥러닝(특히 CNN) 기술을 사용하여 압도적인 성능으로 우승했습니다. 이는 딥러닝의 가능성을 전 세계에 각인시킨 사건으로, AI 연구의 패러다임을 바꾸고 본격적인 딥러닝 시대를 열었습니다.</p>
+             <div class="person-org">
+                <strong>알렉스 크리제브스키 (Alex Krizhevsky):</strong> 일리야 수츠케버, 제프리 힌튼과 함께 알렉스넷을 개발했습니다.
+            </div>
+
+            <h3>알파고 쇼크</h3>
+            <p>2016년, 구글 딥마인드가 개발한 <strong>알파고(AlphaGo)</strong>가 세계 최정상급 바둑 기사 이세돌 9단과의 대국에서 승리한 사건은 전 세계에 큰 충격을 주었습니다. 이는 AI가 인간 고유의 영역으로 여겨졌던 직관과 창의성이 요구되는 분야에서도 뛰어난 능력을 발휘할 수 있음을 보여주며 AI에 대한 대중적 관심을 폭발시켰습니다.</p>
+             <div class="person-org">
+                <strong>딥마인드 (DeepMind):</strong> 데미스 허사비스 등이 2010년 설립한 AI 연구 기업으로, 2014년 구글에 인수되었습니다. 강화학습과 딥러닝을 결합하여 알파고, 알파폴드 등 혁신적인 AI를 개발했습니다.
+            </div>
+
+            <h3>트랜스포머 모델의 등장</h3>
+            <p>2017년, 구글 연구팀(Ashish Vaswani 등)은 "Attention Is All You Need"라는 논문을 통해 <strong>트랜스포머(Transformer)</strong> 모델을 발표합니다. 트랜스포머는 기존의 순환 신경망(RNN)이나 CNN 없이 '어텐션(Attention)' 메커니즘만으로 문장 내 단어 간의 관계를 효과적으로 학습할 수 있음을 보여주었습니다. 이는 자연어 처리(NLP) 분야에 혁명을 가져왔습니다.</p>
+            <div class="key-concept">
+                <strong>어텐션 메커니즘 (Attention Mechanism):</strong> 입력 시퀀스에서 특정 시점의 출력값을 예측할 때, 입력 시퀀스의 특정 부분에 더 집중(가중치를 부여)하여 관련 정보를 효과적으로 활용하는 방법입니다.
+            </div>
+        </section>
+
+        <section class="timeline-event">
+            <h2>2020년대 ~ 현재: 생성형 AI 시대와 미래 전망</h2>
+            <p>트랜스포머 모델을 기반으로 한 거대 언어 모델(Large Language Models, LLM)이 등장하면서, AI는 텍스트, 이미지, 코드, 심지어 동영상까지 '생성'하는 능력을 갖추게 되었습니다.</p>
+            
+            <h3>GPT와 챗GPT의 열풍</h3>
+            <p>OpenAI는 트랜스포머 모델의 디코더 구조를 활용하여 <strong>GPT(Generative Pre-trained Transformer)</strong> 시리즈를 개발했습니다. 특히 2020년 발표된 <strong>GPT-3</strong>는 놀라운 수준의 자연스러운 텍스트 생성 능력과 다양한 작업 수행 능력을 보여주며 큰 주목을 받았습니다.</p>
+            <p>그리고 2022년 11월, GPT-3.5를 기반으로 한 대화형 AI 서비스인 <strong>챗GPT(ChatGPT)</strong>가 공개되면서 전 세계적으로 생성형 AI 열풍이 불었습니다. 챗GPT는 일반 대중도 쉽게 AI와 대화하며 정보를 얻고, 글을 쓰고, 코드를 짜는 등 다양한 작업을 할 수 있게 만들었습니다.</p>
+            <div class="person-org">
+                <strong>OpenAI:</strong> 2015년 샘 알트만, 일론 머스크 등이 인류에게 유익한 AI 개발을 목표로 설립한 연구 기관. GPT 시리즈, DALL-E(이미지 생성 AI) 등을 개발했습니다.
+            </div>
+
+            <h3>생성형 AI 시대</h3>
+            <p>현재는 텍스트 생성(LLM)뿐만 아니라, 이미지 생성(예: DALL-E, Stable Diffusion, Midjourney), 코드 생성(예: GitHub Copilot), 음악 생성, 비디오 생성 등 다양한 분야에서 AI가 창의적인 결과물을 만들어내는 <strong>생성형 AI(Generative AI)</strong> 시대입니다. 이러한 모델들은 방대한 데이터를 학습하여 새로운 콘텐츠를 만들어내며, 다양한 산업에 혁신을 가져오고 있습니다.</p>
+            <p>물론, 생성형 AI가 아직 많은 컴퓨팅 자원을 필요로 하고, 윤리적 문제(편향, 저작권, 가짜 정보 등)도 안고 있지만, 그 발전 속도는 매우 빠릅니다.</p>
+
+            <h3>미래 전망: AGI와 특이점</h3>
+            <p>GPT-4, 그리고 곧 등장할 GPT-5와 같은 더욱 발전된 모델들은 AI의 능력을 한층 더 끌어올릴 것으로 기대됩니다. 일부 전문가들은 AI가 인간의 모든 지적 작업을 수행할 수 있는 <strong>범용 인공지능(Artificial General Intelligence, AGI)</strong>에 가까워지고 있으며, 심지어 인간의 지능을 초월하는 <strong>특이점(Singularity)</strong>이 올 수도 있다고 예측합니다. 물론 이에 대해서는 다양한 의견이 존재합니다.</p>
+            <p>앤드류 응(Andrew Ng) 스탠퍼드대 교수와 같은 석학들은 2024년이 AI 분야에서 또 한 번의 큰 도약이 있을 해라고 전망하기도 했습니다. 앞으로 AI가 우리 사회와 삶을 어떻게 변화시킬지 귀추가 주목됩니다.</p>
+        </section>
+
+        <div class="summary-box">
+            <h3>인공지능 역사 요약</h3>
+            <p>스위치 개념에서 시작된 컴퓨터의 발전, 진공관에서 GPU까지 하드웨어의 진화, 알파넷에서 월드와이드웹까지 인터넷의 확장, 기호주의와 신경망의 대립, AI의 겨울과 부활, 그리고 역전파, CNN, 트랜스포머를 거쳐 현재의 생성형 AI 시대까지! 인공지능은 끊임없이 발전하며 우리의 미래를 만들어가고 있습니다.</p>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2024 AI 역사 강의. 모든 권리 보유.</p>
+    </footer>
+
+    <script>
+        // Simple scroll animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 }); // Trigger when 10% of the element is visible
+
+        document.querySelectorAll('.timeline-event').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+
+</body>
+</html>

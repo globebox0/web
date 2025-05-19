@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>인공지능 역사 강의</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #3498db;
+            --light-bg: #f8f9fa;
+            --dark-text: #2d3436;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+
+        header {
+            background: var(--primary-color);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .timeline {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .era-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .era-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .era-header {
+            background: var(--accent-color);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .era-content {
+            padding: 1rem;
+        }
+
+        .tech-item {
+            margin: 1rem 0;
+            padding: 1rem;
+            background: #f1f1f1;
+            border-radius: 8px;
+        }
+
+        .key-people {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: #e8f5e9;
+            border-radius: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .timeline {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .expand-btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 5px 10px;
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        ul {
+            margin: 0.5rem 0;
+            padding-left: 1.2rem;
+        }
+
+        strong {
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>인공지능의 역사</h1>
+        <p>하드웨어 발전과 네트워크 기술의 진화 속에서 본 AI의 여정</p>
+    </header>
+
+    <div class="container">
+        <section class="timeline">
+            <!-- 1940년대 -->
+            <div class="era-card">
+                <div class="era-header">1940년대: 기반 마련</div>
+                <div class="era-content">
+                    <div class="tech-item">
+                        <strong>진공관 컴퓨터</strong>
+                        <p>1946년 최초의 전자 컴퓨터 에니악(ENIAC) 등장. 17,468개 진공관 사용</p>
+                        <button class="expand-btn" onclick="toggleDetails('vacuum')">자세히 보기</button>
+                        <div id="vacuum" class="hidden">
+                            <p>진공관은 스위치 역할을 하며 0과 1을 표현. 하지만 크기와 전력 소모가 컸음</p>
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <strong>트랜지스터 발명</strong>
+                        <p>1947년 벨연구소에서 트랜지스터 개발. 진공관의 단점을 극복</p>
+                    </div>
+                    <div class="key-people">
+                        <strong>주요 인물:</strong>
+                        <ul>
+                            <li>존 애타나소프 - 최초의 전자 컴퓨터 설계자</li>
+                            <li>존 폰 노이만 - 프로그램 내장식 컴퓨터 개념 제안</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 1950년대 -->
+            <div class="era-card">
+                <div class="era-header">1950년대: AI 탄생</div>
+                <div class="era-content">
+                    <div class="tech-item">
+                        <strong>다트머스 회의</strong>
+                        <p>1956년 최초의 AI 학술 회의. "인공지능"이라는 용어 공식 사용 시작</p>
+                    </div>
+                    <div class="tech-item">
+                        <strong>퍼셉트론</strong>
+                        <p>1957년 프랑크 로젠블랏의 신경망 모델. IBM 704에서 구현됨</p>
+                    </div>
+                    <div class="key-people">
+                        <strong>주요 인물:</strong>
+                        <ul>
+                            <li>존 매카시 - "인공지능" 용어 창시자</li>
+                            <li>마빈 민스키 - 기호주의 대표 학자</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 1960년대 -->
+            <div class="era-card">
+                <div class="era-header">1960년대: AI의 겨울</div>
+                <div class="era-content">
+                    <div class="tech-item">
+                        <strong>XOR 문제</strong>
+                        <p>1969년 민스키에 의해 단층 퍼셉트론의 한계 증명. 연구 자금 감소</p>
+                    </div>
+                    <div class="tech-item">
+                        <strong>실리콘밸리 탄생</strong>
+                        <p>윌리엄 쇼클리의 반도체 연구소에서 인텔 창립으로 이어짐</p>
+                    </div>
+                    <div class="key-people">
+                        <strong>기술 발전:</strong>
+                        <ul>
+                            <li>1958년: 잭 킬비의 IC(집적회로) 발명</li>
+                            <li>1969년: DARPA의 ARPANET 시작</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 1970-80 -->
+            <div class="era-card">
+                <div class="era-header">1970-80년대: 부활의 시작</div>
+                <div class="era-content">
+                    <div class="tech-item">
+                        <strong>역전파 알고리즘</strong>
+                        <p>1986년 제프리 힌튼 팀이 다층 신경망 학습 방법 증명</p>
+                    </div>
+                    <div class="tech-item">
+                        <strong>집적회로 발전</strong>
+                        <p>인텔의 마이크로프로세서(1971)와 D-RAM(1973)로 컴퓨터 성능 혁신</p>
+                    </div>
+                    <div class="key-people">
+                        <strong>주요 인물:</strong>
+                        <ul>
+                            <li>제프리 힌튼 - 딥러닝의 아버지</li>
+                            <li>얀 루쿤 - CNN 개발</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 1990년대 -->
+            <div class="era-card">
+                <div class="era-header">1990년대: 인터넷 시대</div>
+                <div class="era-content">
+                    <div class="tech-item">
+                        <strong>인터넷 확산</strong>
+                        <p>1991년 팀 버너스리의 월드와이드웹으로 데이터 공유 혁명</p>
+                    </div>
+                    <div class="tech-item">
+                        <strong>GPU 등장</strong>
+                        <p>1999년 엔비디아의 GPU로 병렬 처리 능력 비약적 발전</p>
+                    </div>
+                    <div class="key-people">
+                        <strong>주요 조직:</strong>
+                        <ul>
+                            <li>IBM - 1401 컴퓨터 보급</li>
+                            <li>DARPA - ARPANET 주도</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2000년대 -->
+            <div class="era-card">
+                <div class="era-header">2000년대: 데이터 시대</div>
+                <div class="era-content">
+                    <div class="tech-item">
+                        <strong>이미지넷 프로젝트</strong>
+                        <p>2009년 시작된 대규모 이미지 데이터베이스로 딥러닝 발전 기여</p>
+                    </div>
+                    <div class="tech-item">
+                        <strong>클라우드 컴퓨팅</strong>
+                        <p>2006년 AWS 시작으로 분산 처리 환경 조성</p>
+                    </div>
+                    <div class="key-people">
+                        <strong>기술 발전:</strong>
+                        <ul>
+                            <li>2007년: iPhone 출시로 모바일 데이터 급증</li>
+                            <li>2011년: IBM 왓슨의 제퍼디 우승</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2010년대 이후 -->
+            <div class="era-card">
+                <div class="era-header">2010년대 이후: 딥러닝 시대</div>
+                <div class="era-content">
+                    <div class="tech-item">
+                        <strong>알파고</strong>
+                        <p>2016년 이세돌과의 바둑 대결로 AI 가능성 증명</p>
+                    </div>
+                    <div class="tech-item">
+                        <strong>트랜스포머</strong>
+                        <p>2017년 구글의 트랜스포머 모델로 NLP 혁명</p>
+                    </div>
+                    <div class="key-people">
+                        <strong>최근 발전:</strong>
+                        <ul>
+                            <li>2020년: GPT-3의 언어 생성 능력</li>
+                            <li>2022년: 챗GPT의 대중화</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        function toggleDetails(id) {
+            var el = document.getElementById(id);
+            el.classList.toggle('hidden');
+        }
+    </script>
+</body>
+</html>
