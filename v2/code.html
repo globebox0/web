@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>우리가 만드는 직장 규칙! 노동조합 이야기</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Progress Bar -->
+    <div class="progress-bar-container fixed-top">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <div class="container">
+        <header>
+            <div class="header-icon-container">
+                <i class="fas fa-users header-icon"></i>
+            </div>
+            <h1>우리가 만드는 직장 규칙!</h1>
+            <p class="subtitle">노동조합, 왜 '작은 국회'라고 할까요? 함께 알아봐요!</p>
+<!--             <div class="header-badge">
+                <i class="fas fa-graduation-cap"></i>
+                <span>물류센터 노동자를 위한 쉬운 교육자료</span>
+            </div> -->
+        </header>
+
+        <main>
+<!--             <h2 class="dashboard-title">
+                <i class="fas fa-th-large"></i> 핵심 내용 대시보드
+            </h2> -->
+            <div class="dashboard">
+                <article class="card" data-color="blue">
+                    <div class="card-header">
+                        <i class="fas fa-book-open card-icon"></i>
+                        <h2>노동조합, 규칙 만드는 곳?</h2>
+                    </div>
+                    <div class="basic-content">
+                        <p>노동조합이 단순한 모임이 아니에요! 우리 직장의 규칙을 만드는 중요한 역할을 한답니다. 어떻게 그런 힘이 생기는 걸까요?</p>
+                    </div>
+                    <button class="toggle-details-btn" data-modal-target="intro">자세히 보기 <i class="fas fa-arrow-right"></i></button>
+                </article>
+
+                <article class="card" data-color="green">
+                    <div class="card-header">
+                        <i class="fas fa-gavel card-icon"></i>
+                        <h2>헌법이 보장하는 우리의 힘</h2>
+                    </div>
+                    <div class="basic-content">
+                        <p>헌법이 우리 노동자에게 '뭉치고, 함께 이야기하고, 행동할 권리'를 줬어요. 이게 바로 우리가 직장 규칙을 만들 수 있는 힘의 바탕이죠!</p>
+                    </div>
+                    <button class="toggle-details-btn" data-modal-target="constitutionalBasis">자세히 보기 <i class="fas fa-arrow-right"></i></button>
+                </article>
+
+                <article class="card" data-color="red">
+                    <div class="card-header">
+                        <i class="fas fa-file-signature card-icon"></i>
+                        <h2>단체협약: 우리 직장의 '법'</h2>
+                    </div>
+                    <div class="basic-content">
+                        <p>노동조합과 회사가 맺는 '단체협약'은 그냥 약속이 아니에요. 회사 규칙이나 개인 계약보다 더 힘센, 우리 직장의 법이랍니다!</p>
+                    </div>
+                    <button class="toggle-details-btn" data-modal-target="collectiveAgreement">자세히 보기 <i class="fas fa-arrow-right"></i></button>
+                </article>
+
+                <article class="card" data-color="purple">
+                    <div class="card-header">
+                        <i class="fas fa-bullhorn card-icon"></i>
+                        <h2>대표선수 노조의 역할</h2>
+                    </div>
+                    <div class="basic-content">
+                        <p>여러 노조가 있을 때, '대표선수 노조'가 나서서 모두를 위한 약속(단체협약)을 만들어요. 최근 법이 바뀌면서 더 힘이 세졌죠!</p>
+                    </div>
+                    <button class="toggle-details-btn" data-modal-target="representativeUnion">자세히 보기 <i class="fas fa-arrow-right"></i></button>
+                </article>
+
+                <article class="card" data-color="yellow">
+                    <div class="card-header">
+                        <i class="fas fa-city card-icon"></i>
+                        <h2>직장 규칙 vs 동네 규칙</h2>
+                    </div>
+                    <div class="basic-content">
+                        <p>우리 동네 규칙(조례)을 주민 대표가 만들 듯, 직장 규칙(단체협약)도 우리 대표(노조)가 만들어요. 비슷한 점도, 다른 점도 있답니다!</p>
+                    </div>
+                    <button class="toggle-details-btn" data-modal-target="localAutonomy">자세히 보기 <i class="fas fa-arrow-right"></i></button>
+                </article>
+
+                <article class="card" data-color="indigo">
+                    <div class="card-header">
+                        <i class="fas fa-landmark card-icon"></i>
+                        <h2>노조 활동, 국회랑 비슷해?</h2>
+                    </div>
+                    <div class="basic-content">
+                        <p>국회가 법 만들 때 토론하고 투표하죠? 노동조합이 단체협약 만들 때도 조합원 의견 듣고, 회사랑 협상해요. 정말 비슷하답니다!</p>
+                    </div>
+                    <button class="toggle-details-btn" data-modal-target="nationalAssembly">자세히 보기 <i class="fas fa-arrow-right"></i></button>
+                </article>
+
+                <article class="card" data-color="pink"> <!-- Assuming a new color or reuse -->
+                    <div class="card-header">
+                        <i class="fas fa-globe-americas card-icon"></i>
+                        <h2>다른 나라는 어떨까?</h2>
+                    </div>
+                    <div class="basic-content">
+                        <p>독일, 스웨덴, 프랑스... 다른 나라 노동조합은 어떻게 직장 규칙을 만들고, 회사 운영에 참여할까요? 배울 점이 많아요!</p>
+                    </div>
+                    <button class="toggle-details-btn" data-modal-target="foreignCases">자세히 보기 <i class="fas fa-arrow-right"></i></button>
+                </article>
+
+                <article class="card" data-color="orange"> <!-- Assuming a new color or reuse -->
+                    <div class="card-header">
+                        <i class="fas fa-exclamation-triangle card-icon"></i>
+                        <h2>우리의 숙제: 현실의 벽</h2>
+                    </div>
+                    <div class="basic-content">
+                        <p>아직 노조 가입률도 낮고, 법적인 어려움도 있어요. 사회적으로도 오해를 받기도 하고요. 이런 문제들을 어떻게 해결할까요?</p>
+                    </div>
+                    <button class="toggle-details-btn" data-modal-target="limitations">자세히 보기 <i class="fas fa-arrow-right"></i></button>
+                </article>
+
+                <article class="card" data-color="teal"> <!-- Assuming a new color or reuse -->
+                    <div class="card-header">
+                        <i class="fas fa-tools card-icon"></i>
+                        <h2>더 강한 노조! 어떻게?</h2>
+                    </div>
+                    <div class="basic-content">
+                        <p>법도 바꾸고, 새로운 방식으로 조합원도 늘리고! 디지털 시대에 맞는 노조 활동은 뭘까요? 함께 고민해봐요!</p>
+                    </div>
+                    <button class="toggle-details-btn" data-modal-target="strengtheningMeasures">자세히 보기 <i class="fas fa-arrow-right"></i></button>
+                </article>
+
+                <article class="card" data-color="cyan"> <!-- Assuming a new color or reuse -->
+                    <div class="card-header">
+                        <i class="fas fa-balance-scale card-icon"></i>
+                        <h2>노조, 민주주의의 파트너!</h2>
+                    </div>
+                    <div class="basic-content">
+                        <p>노동조합은 우리 사회 민주주의를 더 건강하게 만들어요. 국회나 정부를 돕고, 사회 갈등도 풀고, 약자도 지키는 중요한 역할을 한답니다!</p>
+                    </div>
+                    <button class="toggle-details-btn" data-modal-target="democracyRole">자세히 보기 <i class="fas fa-arrow-right"></i></button>
+                </article>
+            </div>
+        </main>
+
+        <footer>
+            <div class="footer-icon-container">
+                 <i class="fas fa-graduation-cap"></i>
+            </div>
+            <p class="footer-title">노동조합 교육자료</p>
+            <p class="footer-subtitle">© 우체국물류지원단 물류노동조합. 우리의 권리를 알고, 함께 행동하며, 더 나은 미래를 만들어가요!</p>
+        </footer>
+    </div>
+
+    <div id="myModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" tabindex="-1">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">타이틀</h2>
+                <button class="modal-close-btn" aria-label="닫기">&times;</button>
+            </div>
+            <div class="modal-body" id="modal-body-content">
+                <p>여기에 내용이 동적으로 채워집니다.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-return-btn">닫기</button>
+            </div>
+        </div>
+    </div>
+
+    <script defer src="script.js"></script>
+
+</body>
+</html>
