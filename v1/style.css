@@ -1,0 +1,363 @@
+/* --- CSS Variables --- */
+:root {
+  --primary: #2F2F4F;
+  --primary-light: #4A4A6A;
+  --primary-dark: #1F1F3F;
+  --accent: #6366F1;
+  --accent-light: #818CF8;
+  --accent-rgb: 99, 102, 241; /* For use with rgba() */
+  --neutral-light: #F8FAFC;
+  --neutral-medium: #E2E8F0;
+  --neutral-dark: #64748B;
+  --text-primary: #1E293B;
+  --text-secondary: #475569;
+  --white: #FFFFFF;
+  --heading-color: var(--primary);
+  --primary-color: var(--accent); /* Used for accents like icons, card borders */
+  --secondary-color: var(--neutral-dark); /* Used for secondary elements like footer bg */
+  --success-color: var(--accent); /* Can be a distinct color if needed */
+  --border-radius: 8px;
+  --box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+
+  --gray-400: #9CA3AF;
+  --gray-800: #1F2937;
+}
+
+/* --- Global Styles --- */
+body {
+  margin: 0;
+  font-family: 'Nanum Gothic', 'Malgun Gothic', Apple SD Gothic Neo, sans-serif;
+  line-height: 1.6;
+  color: var(--text-primary);
+  background: linear-gradient(135deg, var(--neutral-light) 0%, var(--neutral-medium) 100%);
+  overflow-x: hidden; /* Prevent horizontal scrollbar */
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 15px;
+}
+
+/* --- Header --- */
+header {
+  padding: 30px 20px;
+  margin-bottom: 30px;
+  color: var(--white);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 50%, var(--accent) 100%);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  text-align: center;
+}
+
+header h1 {
+  margin: 0 0 10px 0;
+  font-size: 2.2em;
+  font-weight: 700;
+}
+
+header p {
+  margin-top: 5px;
+  font-size: 1.1em;
+  font-weight: 300;
+  opacity: 0.9;
+}
+
+/* --- Dashboard and Cards --- */
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.card { /* Changed from div.card to article.card in HTML */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
+  background-color: var(--white);
+  border: 1px solid var(--neutral-medium);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  overflow: hidden; /* Ensures ::before doesn't overflow rounded corners */
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 50%, var(--primary-light) 100%);
+}
+
+.card:hover,
+.card:focus-within { /* Added focus-within for better a11y on card interactions */
+  transform: translateY(-8px);
+  box-shadow: 0 25px 50px rgba(47, 47, 79, 0.15); /* More pronounced shadow */
+  border-color: rgba(var(--accent-rgb), 0.3);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+  border-bottom: 2px solid var(--primary-color);
+}
+
+.card-header .fas,
+.card-header .far,
+.card-header .fab { /* Font Awesome icon styling */
+  margin-right: 15px;
+  font-size: 1.8rem;
+  color: var(--primary-color);
+}
+
+.card-header h2 {
+  margin-top: 0; /* Removed margin-bottom for better alignment */
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--heading-color);
+}
+
+.basic-content {
+  flex-grow: 1; /* Allows content to take available space before button */
+}
+
+.basic-content p {
+  margin-bottom: 10px;
+  font-size: 0.95em;
+  color: var(--text-secondary);
+}
+
+.card strong { /* Styling for <strong> tags within cards */
+  font-weight: 500;
+  color: var(--primary-color);
+}
+
+.toggle-details-btn {
+  align-self: flex-end; /* Aligns button to the right */
+  padding: 8px 15px;
+  margin-top: 15px;
+  font-size: 0.9rem;
+  color: var(--white);
+  background-color: var(--accent);
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.toggle-details-btn:hover,
+.toggle-details-btn:focus { /* Added :focus style */
+  background-color: var(--primary);
+  outline: 2px solid var(--primary-dark); /* Clearer focus indicator */
+  outline-offset: 2px;
+}
+
+/* --- Modal Styles --- */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0,0,0,0.6); /* Semi-transparent overlay */
+  overflow: hidden; /* Prevents main scrollbars when modal is open */
+  animation: fadeInModal 0.3s ease-out;
+}
+
+.modal:focus { /* Remove default outline when modal container itself is focused */
+    outline: none;
+}
+
+.modal-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  max-width: 700px;
+  max-height: 80vh; /* Limits height, allows scrolling within modal */
+  margin: auto; /* Centers content */
+  padding: 25px;
+  background-color: var(--neutral-light);
+  border: 1px solid var(--neutral-medium);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: center; /* Centers title */
+  align-items: center;
+  flex-shrink: 0; /* Prevents header from shrinking */
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid var(--neutral-medium);
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 1.8em;
+  color: var(--heading-color);
+  text-align: center; /* Ensure title is centered if it wraps */
+}
+
+.modal-body {
+  flex-grow: 1; /* Takes available space */
+  min-height: 100px; /* Ensures some height even if content is short */
+  font-size: 1em;
+  color: var(--text-primary);
+  overflow-y: auto; /* Enables scrolling for long content */
+  scrollbar-width: thin; /* For Firefox */
+  scrollbar-color: #bdbdbd #f0f0f0; /* For Firefox */
+}
+
+/* Webkit Scrollbar Styles */
+.modal-body::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modal-body::-webkit-scrollbar-thumb {
+  background: #bdbdbd;
+  border-radius: 4px;
+}
+
+.modal-body p,
+.modal-body li {
+  margin-bottom: 10px;
+  font-size: 1em;
+  color: var(--text-secondary);
+}
+
+.modal-body h4 {
+  margin-top: 20px;
+  margin-bottom: 5px;
+  font-size: 1.2em;
+  color: var(--accent);
+}
+
+.modal-body ul {
+  padding-left: 20px;
+  list-style: disc;
+}
+
+.modal-body li::before { /* Reset any custom li bullets if not needed */
+  content: "";
+  width: 0;
+  margin-left: 0;
+}
+
+.modal-footer {
+  flex-shrink: 0; /* Prevents footer from shrinking */
+  padding-top: 15px;
+  margin-top: 20px;
+  border-top: 1px solid var(--neutral-medium);
+  text-align: right; /* Aligns button to the right */
+}
+
+.modal-return-btn {
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: var(--white);
+  background-color: var(--secondary-color);
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.modal-return-btn:hover,
+.modal-return-btn:focus { /* Added :focus style */
+  background-color: var(--primary-dark);
+  outline: 2px solid var(--primary); /* Clearer focus indicator */
+  outline-offset: 2px;
+}
+
+/* --- Animations --- */
+@keyframes fadeInModal {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fadeOutModal {
+  from { opacity: 1; transform: scale(1); }
+  to { opacity: 0; transform: scale(0.95); }
+}
+
+.modal.fade-out {
+  animation: fadeOutModal 0.3s ease-out forwards;
+}
+
+/* 
+footer {
+  padding: 20px;
+  margin-top: 40px;
+  color: var(--white);
+  background-color: var(--secondary-color);
+  border-radius: var(--border-radius);
+  text-align: center;
+}
+
+footer p {
+  margin:0;
+  font-size: 0.875rem;
+}
+*/ 
+
+footer {
+  padding: 2rem 1rem; /* 32px 16px */
+  margin-top: 2.5rem; /* 40px */
+  color: var(--white);
+  background-color: var(--gray-800);
+  border-radius: var(--border-radius);
+  text-align: center;
+}
+.footer-icon-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+.footer-icon-container i {
+    font-size: 1.875rem; /* 30px */
+    color: var(--blue-400); /* Lighter blue from genspark footer */
+}
+.footer-title {
+  font-size: 1.125rem; /* 18px */
+  margin-bottom: 0.5rem; /* 8px */
+  font-weight: 500;
+}
+.footer-subtitle {
+  font-size: 0.875rem; /* 14px */
+  color: var(--gray-400);
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 1.8em;
+  }
+  header p {
+    font-size: 1em;
+  }
+  .card-header h2 {
+    font-size: 1.3em;
+  }
+  .modal-header h2 {
+    font-size: 1.5em;
+  }
+  .modal-content {
+    width: 90%; /* More width on smaller screens */
+    max-height: 85vh;
+  }
+}
