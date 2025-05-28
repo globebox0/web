@@ -44,19 +44,13 @@ const modalData = {
     representativeUnion: {
         title: "<i class='fas fa-bullhorn card-icon'></i> 대표선수 노조의 역할",
         content: `
-            <p>한 회사에 여러 노동조합이 있을 수 있어요. 그럼 회사는 누구랑 이야기해야 할까요? 이럴 때 등장하는 게 바로 '교섭대표노동조합'이에요. 마치 올림픽에 나가는 국가대표팀처럼, 우리 노동자들을 대표해서 회사와 협상하는 거죠.</p>
-            <h4>교섭대표노동조합, 왜 중요할까요?</h4>
+            <p>한 회사에 여러 노동조합이 있을 수 있어요. 마치 국회에 여러 정당이 있는 것처럼요! 이 경우, 회사는 원칙적으로 단 하나의 <strong>교섭대표노동조합</strong>과 교섭을 진행하게 됩니다. 이게 바로 <strong>교섭창구 단일화 제도</strong>인데요, 여러 다른 목소리를 하나로 모아 회사와 효과적으로 협상하고, 그 결과를 우리 사업장 전체에 적용하기 위한 약속 같은 거예요.</p>
+            <h4>교섭대표노동조합의 역할과 중요성:</h4>
             <ul>
-                <li><strong>하나의 목소리:</strong> 여러 노조가 각자 다른 이야기를 하면 혼란스럽겠죠? 교섭대표노조는 모든 조합원(또는 그 사업장 전체 노동자)의 이익을 위해 하나의 통일된 목소리로 회사와 협상해요. 국회에서 다수당이 법안을 주도하는 것과 비슷하다고 볼 수 있어요.</li>
-                <li><strong>모두에게 적용:</strong> 이렇게 교섭대표노조가 만든 단체협약은 그 사업장의 모든 노동자에게 적용돼요. 특정 노조 조합원뿐만 아니라, 비조합원에게도 효력이 미칠 수 있답니다. 국회에서 만든 법이 모든 국민에게 적용되는 것과 같아요.</li>
-                <li><strong>최근 법 개정으로 더 강화!:</strong> 2023년에 노동조합법이 바뀌면서 좋은 소식이 있었어요!
-                    <ul>
-                        <li><strong>단체협약 유효기간 연장:</strong> 기존 2년에서 최대 3년까지 길어졌어요. 덕분에 한번 만든 좋은 규칙이 더 오랫동안 안정적으로 유지될 수 있게 됐죠.</li>
-                        <li><strong>해고자/퇴직자도 조합원 가능:</strong> 회사에서 부당하게 해고된 분이나 퇴직한 분들도 노동조합 활동을 계속할 수 있는 길이 넓어졌어요. 이건 노동조합의 힘을 키우고, 더 많은 사람들의 목소리를 담는 데 도움이 될 거예요.</li>
-                    </ul>
-                </li>
+                <li><strong>하나의 창구:</strong> 가장 중요한 건, 일단 교섭대표노동조합으로 정해지면 다른 작은 노조들은 회사와 직접 이야기할 수 없게 된다는 점이에요. 오직 교섭대표노동조합만이 회사와 협상 테이블에 앉을 수 있는 '독점 교섭권'을 갖게 되는 거죠. 엄청난 힘이 주어지는 만큼, 교섭대표노동조합에게는 정말 큰 책임이 따라야겠죠?</li>
+                <li><strong>하나의 협약:</strong> 만약 여러 노조가 각자 회사랑 협상해서 규칙이 제각각이라면 너무 복잡할거에요. 교섭대표노조와 회사가 맺은 하나의 단체협약을 통해 우리 회사 전체에 통일된 근로조건을 마련할 수 있어요. 모두에게 똑같이 적용되는 깔끔한 규칙이 생기는 거에요!</li>
             </ul>
-            <p>교섭대표노동조합 제도는 우리 노동자들이 더 힘을 합쳐 효과적으로 권리를 찾고, 좋은 직장 규칙을 만드는 데 아주 중요한 제도랍니다!</p>
+            <p>결국, 막강한 힘과 무거운 책임을 가진 교섭대표노동조합이 우리 사업장 내 '작은 국회'처럼 얼마나 책임감을 갖고, 모든 동료들의 목소리를 소외 없이 골고루 담아내며 주도적으로 활동하느냐에 따라, 우리 모두를 위한 약속 즉, 우리 모두의 권익을 지켜줄 직장 규칙의 수준과 깊이가 결정된답니다. 우리가 가입할 노동조합을 선택하는 것은 '작은 국회'의 국회의원을 뽑는 것과 같아요. 정말 중요한 선택이죠?</p>
         `
     },
     localAutonomy: {
@@ -173,14 +167,35 @@ const modalData = {
             <p>노동조합이 이런 좋은 역할을 하려면, 우리 조합원만의 이익을 넘어 사회 전체를 생각하는 넓은 마음을 가져야 해요. 때로는 우리 행동이 사회에 부담을 주거나 다른 사람들에게 피해를 줄 수도 있다는 점을 항상 생각하고, 더 많은 사람들의 공감을 얻기 위해 노력해야겠죠?</p>
             <p>노동조합이 진정한 민주주의의 파트너로 우뚝 설 때, 우리 직장뿐 아니라 우리 사회 전체가 더 살기 좋은 곳이 될 거예요!</p>
         `
+    },
+    bargainingUnificationProblems: {
+        title: "<i class='fas fa-balance-scale-left card-icon'></i> 물류 노동자는 물류노조로 하나되자!",
+        content: `
+            <p>우리 회사처럼 여러 노동조합이 함께 있다면, 회사는 원칙적으로 단 하나의 '교섭대표노동조합'과만 이야기한다고 했죠? 복잡한 교섭을 단순하게 만들고, 모든 조합원의 근로조건을 통일하려는 좋은 뜻에서 시작된거에요.</p>
+            <h4>하지만, 현실은 어떨까요?</h4>
+            <ul>
+                <li><strong>소수 노조의 설움:</strong> 교섭대표가 되지 못한 소수 노조는 단체교섭권이 없어서, 목소리를 내기 힘들어요. 이렇게 소수노조의 단체교섭권을 박탈하는 교섭창구단일화 제도에 대해 '과잉금지원칙 위반'이라 위헌이라는 헌법재판 소수의견도 있었아요. 5대 4로 아슬아슬하게 위헌 판단이 갈렸답니다.</li>
+                <li><strong>우리 사업장의 현실:</strong> 운전직이 대다수이다 보니, 늘 운전직 중심 노조가 교섭대표가 되죠. 현장의 우리 물류 사업소 노동자들처럼 소수 직종의 간절한 요구는 협상 테이블에 오르기도 어려워요. 한 교섭단위 안에 여러 직종이 섞여 있으면 다수 직종에 밀리기 쉽습니다.</li>
+            </ul>
+            <h4>공정대표의무, 제대로 지켜지고 있나요?</h4>
+            <p>우리 노조법은 소수노조의 교섭권 침해를 방지하고 교섭대표노조와 회사가 소수 노조를 차별하지 않도록 <strong>공정대표의무</strong>를 부여했어요. 
+            <ul>
+                <li><strong>모든 조합원의 목소리 대변:</strong> 교섭대표노동조합은 단순히 자신들 조합원의 이익뿐만 아니라, 교섭창구 단일화 절차에 참여한 모든 노동조합과 그 조합원, 나아가 해당 사업장 전체 노동자들의 이해관계를 공정하게 대변해야 해요.</li>
+                <li><strong>적극적인 정보 공유와 의견 수렴:</strong> 소수 노조의 의견을 경청하고, 교섭 과정과 결과에 대한 정보를 투명하게 공유하며, 그들의 입장이 단체협약에 합리적으로 반영될 수 있도록 적극적으로 노력해야 합니다. 이는 단순한 시혜가 아니라, 제도의 정당성을 확보하고 노동자 간의 단결을 유지하기 위한 필수적인 역할이에요.</li>
+            </ul>
+            <p>하지만 현실은 어떨까요? 회의자료도 제대로 안 주고, 형식적인 회의로 끝나는 경우가 많아요. 이는 '절차적 공정대표의무' 위반일 수 있습니다!</p>
+            <h4>우리의 목소리, 어떻게 찾을까요?</h4>
+            <p>노동 3권의 핵심은 우리 스스로 근로조건을 결정하는 <strong>자기결정권</strong>과 <strong>집단적 자치</strong>예요. 현재 제도는 이를 제한할 수 있다는 비판을 받고 있지만, 물류 사업소 노동자들이 하나되어 힘을 합치면 우리의 목소리를 대변 할 수 있는 '교섭대표'를 만들어 낼 수 있어요. <strong>물류 사업소 노동자는 물류노조로 뭉치자!</strong> 이것이 우리의 권리를 찾고, 진정한 자치를 실현하는 첫 걸음이 될 수 있답니다.</p>
+        `
     }
 };
+
 
 const modal = document.getElementById("myModal");
 const modalTitle = document.getElementById("modal-title");
 const modalBodyContent = document.getElementById("modal-body-content");
 const modalReturnBtn = modal.querySelector(".modal-return-btn");
-const modalCloseBtn = modal.querySelector(".modal-close-btn"); // New close button in header
+const modalCloseBtn = modal.querySelector(".modal-close-btn");
 
 const toggleButtons = document.querySelectorAll('.card .toggle-details-btn');
 let previouslyFocusedElement;
@@ -193,33 +208,30 @@ function openModal(targetId) {
         modalTitle.innerHTML = data.title;
         modalBodyContent.innerHTML = data.content;
         
-        // Dynamically set modal header icon color based on card color if possible
         const card = document.querySelector(`.card button[data-modal-target="${targetId}"]`).closest('.card');
-        const cardColor = card.dataset.color; // e.g., "blue", "green"
-        const iconInTitle = modalTitle.querySelector('.card-icon');
+        const cardDataColor = card.dataset.color;
+        const iconInTitle = modalTitle.querySelector('.fas, .far, .fab, .card-icon');
+        
         if (iconInTitle) {
-             // Remove existing color classes
-            iconInTitle.classList.remove('blue-500', 'green-500', 'red-500', 'purple-500', 'yellow-500', 'indigo-500', 'pink-500', 'orange-500', 'teal-500', 'cyan-500'); // Add all possible var names
-            // Add new color class if it exists, otherwise default
-            const colorVar = getComputedStyle(document.documentElement).getPropertyValue(`--${cardColor}-500`).trim();
-            if (colorVar) {
-                 iconInTitle.style.color = colorVar;
+            const colorVarName = `--${cardDataColor.replace('custom-', 'custom-color-')}`;
+            const colorVarValue = getComputedStyle(document.documentElement).getPropertyValue(colorVarName).trim();
+
+            if (colorVarValue) {
+                 iconInTitle.style.color = colorVarValue;
             } else {
-                 iconInTitle.style.color = 'var(--blue-500)'; // Default
+                 console.warn(`CSS variable ${colorVarName} not found for modal icon. Falling back to default.`);
+                 iconInTitle.style.color = 'var(--blue-500)';
             }
         }
-
 
         modal.style.display = "flex";
         modal.classList.remove('fade-out');
         document.body.style.overflow = 'hidden';
         modalBodyContent.scrollTop = 0;
 
-        modal.focus(); // Set focus to the modal container
-        // First focusable element in modal could be close button or return button
+        modal.focus(); 
         const firstFocusable = modalCloseBtn || modalReturnBtn;
         if(firstFocusable) firstFocusable.focus();
-
 
     } else {
         console.error("해당 타겟에 대한 모달 데이터를 찾을 수 없습니다:", targetId);
@@ -234,7 +246,7 @@ function closeModal() {
         if (previouslyFocusedElement) {
             previouslyFocusedElement.focus();
         }
-    }, 280); // Slightly less than animation to avoid flicker
+    }, 280); 
 }
 
 function trapFocusInModal(event) {
@@ -253,12 +265,12 @@ function trapFocusInModal(event) {
     const firstFocusableElement = focusableElements[0];
     const lastFocusableElement = focusableElements[focusableElements.length - 1];
 
-    if (event.shiftKey) { // Shift + Tab
+    if (event.shiftKey) { 
         if (document.activeElement === firstFocusableElement) {
             lastFocusableElement.focus();
             event.preventDefault();
         }
-    } else { // Tab
+    } else { 
         if (document.activeElement === lastFocusableElement) {
             firstFocusableElement.focus();
             event.preventDefault();
@@ -276,10 +288,9 @@ toggleButtons.forEach(button => {
 if (modalReturnBtn) {
     modalReturnBtn.addEventListener("click", closeModal);
 }
-if (modalCloseBtn) { // Event listener for new close button
+if (modalCloseBtn) { 
     modalCloseBtn.addEventListener("click", closeModal);
 }
-
 
 window.addEventListener("click", function(event) {
     if (event.target === modal) {
@@ -297,28 +308,12 @@ window.addEventListener("keydown", function(event) {
 
 modal.addEventListener('keydown', trapFocusInModal);
 
-// Progress bar
 window.addEventListener('scroll', function() {
     const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
     const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const scrolled = (winScroll / height) * 100;
+    const scrolled = (height > 0) ? (winScroll / height) * 100 : 0;
     const progressBar = document.getElementById('progressBar');
     if(progressBar) {
         progressBar.style.width = scrolled + '%';
     }
-});
-
-// Card hover effect (JS part from genspark, though CSS handles most of it)
-document.addEventListener('DOMContentLoaded', function() {
-    const cards = document.querySelectorAll('.card');
-    cards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            // CSS handles this, but if more complex JS interaction is needed for hover:
-            // this.style.transform = 'translateY(-5px) scale(1.02)';
-        });
-        
-        card.addEventListener('mouseleave', function() {
-            // this.style.transform = 'translateY(0) scale(1)';
-        });
-    });
 });
