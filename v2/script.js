@@ -170,7 +170,7 @@ const modalData = {
         `
     },
     bargainingUnificationProblems: {
-        title: "<i class='fas fa-balance-scale-left card-icon'></i> 물류 노동자는 물류노조로 뭉치자!",
+        title: "<i class='fas fa-users card-icon'></i> 물류 노동자는 물류노조로 뭉치자!",
         content: `
             <p>우리 회사처럼 여러 노동조합이 함께 있다면, 회사는 원칙적으로 단 하나의 '교섭대표노동조합'과만 이야기한다고 했죠? 복잡한 교섭을 단순하게 만들고, 모든 조합원의 근로조건을 통일하려는 좋은 뜻에서 시작된거에요.</p>
             <h4>하지만, 현실은 어떨까요?</h4>
