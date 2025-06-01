@@ -1,0 +1,318 @@
+body {
+    font-family: 'Nanum Gothic', sans-serif; /* 나눔고딕 또는 다른 가독성 좋은 한글 폰트 */
+    line-height: 1.8;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+header {
+    background-color: #005a87; /* 노동조합 대표 색상 (예시) */
+    color: white;
+    padding: 2em 1em;
+    text-align: center;
+    border-bottom: 5px solid #ffc107; /* 포인트 색상 (예시) */
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+    font-weight: bold;
+}
+
+header p {
+    font-size: 1.2em;
+    margin-top: 0.5em;
+}
+
+#table-of-contents {
+    background-color: #eef7ff;
+    padding: 1.5em;
+    margin: 1em;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+#table-of-contents h2 {
+    margin-top: 0;
+    color: #005a87;
+    font-size: 1.5em;
+    border-bottom: 2px solid #005a87;
+    padding-bottom: 0.5em;
+}
+
+#table-of-contents ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+#table-of-contents ul li a {
+    text-decoration: none;
+    color: #005a87;
+    font-weight: bold;
+    display: block;
+    padding: 0.5em 0;
+    transition: color 0.3s ease;
+}
+
+#table-of-contents ul li a:hover {
+    color: #ffc107;
+}
+
+#table-of-contents ul ul {
+    padding-left: 1.5em;
+}
+
+#table-of-contents ul ul li a {
+    font-weight: normal;
+    font-size: 0.95em;
+}
+
+main {
+    padding: 1em;
+    max-width: 900px;
+    margin: 2em auto;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+section {
+    margin-bottom: 3em;
+    padding-bottom: 2em;
+    border-bottom: 1px dashed #ddd;
+}
+
+section:last-child {
+    border-bottom: none;
+}
+
+h2 {
+    color: #005a87;
+    font-size: 2em;
+    margin-bottom: 1em;
+    padding-bottom: 0.3em;
+    border-bottom: 3px solid #ffc107;
+}
+
+h3 {
+    color: #007bff; /* 부제목 색상 */
+    font-size: 1.6em;
+    margin-top: 1.5em;
+    margin-bottom: 0.8em;
+}
+
+h4 {
+    color: #17a2b8; /* 소제목 색상 */
+    font-size: 1.3em;
+    margin-top: 1.2em;
+    margin-bottom: 0.6em;
+}
+
+.law-quote {
+    background-color: #f0f8ff;
+    border-left: 5px solid #007bff;
+    padding: 1em;
+    margin: 1em 0;
+    font-style: italic;
+}
+
+ul, ol {
+    padding-left: 2em;
+}
+
+ul li, ol li {
+    margin-bottom: 0.5em;
+}
+
+.sub-list {
+    margin-top: 0.5em;
+    padding-left: 1.5em;
+    list-style-type: disc; /* 또는 circle */
+}
+
+.sub-list li {
+    font-size: 0.95em;
+}
+
+/* Tooltip Styles */
+.tooltip-container {
+    position: relative;
+    display: inline-block;
+    margin-top: 0.5em;
+}
+
+.tooltip-trigger {
+    cursor: pointer;
+    color: #007bff;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.tooltip-content {
+    visibility: hidden;
+    width: 250px;
+    background-color: #555;
+    color: #fff;
+    text-align: left;
+    border-radius: 6px;
+    padding: 10px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%; /* Position above the trigger */
+    left: 50%;
+    margin-left: -125px; /* Use half of the width to center */
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 0.9em;
+    line-height: 1.4;
+}
+
+.tooltip-container:hover .tooltip-content,
+.tooltip-trigger:focus + .tooltip-content, /* For accessibility */
+.tooltip-content.active { /* For JS-controlled visibility */
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Interactive Box (Quiz) Styles */
+.interactive-box {
+    background-color: #fffadf;
+    border: 1px solid #ffc107;
+    padding: 1em;
+    margin: 1.5em 0;
+    border-radius: 8px;
+}
+
+.interactive-box h4 {
+    margin-top: 0;
+    color: #d9534f;
+}
+
+.interactive-box button {
+    background-color: #005a87;
+    color: white;
+    border: none;
+    padding: 0.5em 1em;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease;
+}
+
+.interactive-box button:hover {
+    background-color: #004160;
+}
+
+.answer-box {
+    margin-top: 0.5em;
+    font-weight: bold;
+    color: green;
+}
+
+/* Diagram Placeholder Styles */
+.diagram-placeholder {
+    background-color: #f0f0f0;
+    border: 1px dashed #ccc;
+    padding: 1em;
+    text-align: center;
+    margin: 1em 0;
+    font-style: italic;
+    color: #777;
+}
+
+/* Accordion Styles */
+.accordion-header {
+    cursor: pointer;
+    padding: 0.8em;
+    background-color: #e7f3fe;
+    border: 1px solid #b8d6f0;
+    border-radius: 5px;
+    margin-bottom: 0.2em;
+    transition: background-color 0.3s ease;
+    font-size: 1.4em; /* 크기 조정 */
+    color: #005a87;
+}
+
+.accordion-header:hover {
+    background-color: #d0e6fa;
+}
+
+.accordion-header::after { /* desplegable 아이콘 */
+    content: ' ▼'; /* 기본은 아래 화살표 */
+    float: right;
+    transition: transform 0.3s ease;
+}
+.accordion-header.active::after {
+    content: ' ▲'; /* 열렸을 때는 위 화살표 */
+}
+
+.accordion-content {
+    padding: 0 1.2em;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+    border: 1px solid #eee;
+    border-top: none;
+    border-radius: 0 0 5px 5px;
+}
+.accordion-content.active {
+    padding: 1.2em; /* 활성화 시 패딩 적용 */
+    /* max-height는 JS에서 동적으로 설정 */
+}
+
+
+/* Q&A Section Styles */
+.qna-section h4 {
+    font-size: 1.2em; /* Q&A 질문 글씨 크기 */
+}
+.qna-item {
+    margin-bottom: 1em;
+}
+.more-qna {
+    margin-top: 1.5em;
+    font-style: italic;
+    color: #555;
+}
+
+/* Resources Section */
+#resources ul li a {
+    color: #007bff;
+    text-decoration: none;
+}
+#resources ul li a:hover {
+    text-decoration: underline;
+}
+
+footer {
+    text-align: center;
+    padding: 2em;
+    background-color: #333;
+    color: #ccc;
+    font-size: 0.9em;
+    margin-top: 2em;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2em;
+    }
+    header p {
+        font-size: 1em;
+    }
+    h2 {
+        font-size: 1.8em;
+    }
+    h3 {
+        font-size: 1.4em;
+    }
+    h4 {
+        font-size: 1.2em;
+    }
+    .accordion-header {
+        font-size: 1.2em;
+    }
+}
