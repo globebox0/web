@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>알기 쉬운 복수노조 교섭창구 단일화 이야기</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            font-family: 'Noto Sans KR', sans-serif; 
+            scroll-behavior: smooth; /* 부드러운 스크롤 효과 */
+        }
+        .card { 
+            background-color: white; 
+            border-radius: 0.75rem; 
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); 
+            padding: 1.5rem; 
+            margin-bottom: 1.5rem; 
+        }
+        .question-box { 
+            background-color: #f0f9ff; /* 하늘색 배경 */
+            border: 1px solid #bae6fd; /* 하늘색 테두리 */
+            border-radius: 0.5rem; 
+            padding: 1rem; 
+            margin-top: 1rem; 
+        }
+        .answer-feedback { /* 정답/오답 피드백 스타일 */
+            font-weight: bold;
+            margin-top: 0.5rem;
+            padding: 0.5rem;
+            border-radius: 0.25rem;
+        }
+        .correct-answer {
+            color: #16a34a; /* 초록색 */
+            background-color: #f0fdf4; /* 연한 초록색 배경 */
+        }
+        .wrong-answer {
+            color: #dc2626; /* 빨간색 */
+            background-color: #fef2f2; /* 연한 빨간색 배경 */
+        }
+        .tab-button { 
+            padding: 0.75rem 1rem; /* 패딩 조정 */
+            border-radius: 0.375rem 0.375rem 0 0; /* 위쪽 모서리만 둥글게 */
+            cursor: pointer; 
+            background-color: #e5e7eb; /* 기본 배경색 */
+            color: #374151; /* 기본 글자색 */
+            font-weight: 500;
+            margin-right: 0.25rem; /* 버튼 간 간격 */
+            border: 1px solid #d1d5db; /* 테두리 추가 */
+            border-bottom: none; /* 아래쪽 테두리 제거 */
+            transition: background-color 0.3s ease;
+        }
+        .tab-button.active { 
+            background-color: #3b82f6; /* 활성 탭 배경색 (파란색) */
+            color: white; /* 활성 탭 글자색 */
+            border-color: #3b82f6; /* 활성 탭 테두리 색 */
+        }
+        .tab-content { 
+            display: none; 
+            padding: 1.5rem; /* 콘텐츠 패딩 */
+            border: 1px solid #d1d5db; /* 테두리 추가 */
+            border-top: none; /* 위쪽 테두리 제거 */
+            border-radius: 0 0 0.375rem 0.375rem; /* 아래쪽 모서리 둥글게 */
+        }
+        .tab-content.active { 
+            display: block; 
+        }
+        .speech-bubble {
+            position: relative;
+            background: #e2e8f0; /* 말풍선 배경색 */
+            border-radius: .4em;
+            padding: 1em;
+            margin-bottom: 1em;
+        }
+        .speech-bubble:after { /* 말풍선 꼬리 */
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 10%;
+            width: 0;
+            height: 0;
+            border: 20px solid transparent;
+            border-top-color: #e2e8f0; /* 꼬리 색상 */
+            border-bottom: 0;
+            border-left: 0;
+            margin-left: -10px;
+            margin-bottom: -20px;
+        }
+        .character-img {
+            width: 80px; 
+            height: 80px; /* 정사각형으로 */
+            margin-right: 15px; /* 오른쪽 마진 */
+            border: 2px solid #3b82f6; /* 파란색 테두리 */
+        }
+        /* 목차 스타일 */
+        .toc {
+            background-color: #f9fafb; /* 연한 회색 배경 */
+            border: 1px solid #e5e7eb;
+            border-radius: 0.5rem;
+            padding: 1rem;
+        }
+        .toc ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .toc li a {
+            text-decoration: none;
+            color: #1f2937; /* 진한 회색 글자 */
+            padding: 0.5rem 0;
+            display: block;
+            border-radius: 0.25rem;
+            transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+        }
+        .toc li a:hover {
+            background-color: #dbeafe; /* 연한 파란색 배경 (호버) */
+            color: #1d4ed8; /* 진한 파란색 글자 (호버) */
+        }
+        /* 스크롤 맨 위로 가기 버튼 */
+        #scrollToTopBtn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+            cursor: pointer;
+            display: none; /* 기본적으로 숨김 */
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-gray-800">
+    <header class="bg-blue-600 text-white p-6 shadow-md sticky top-0 z-50">
+        <h1 class="text-2xl md:text-3xl font-bold text-center">노동조합 조합원을 위한 알기 쉬운 노동법 이야기 🧐</h1>
+        <p class="text-center text-md md:text-lg mt-1">복수노조 교섭창구 단일화, 제대로 알고 우리 권리 찾아요!</p>
+    </header>
+
+    <button id="scrollToTopBtn" title="맨 위로 가기">↑</button>
+
+    <main class="p-4 md:p-8 max-w-4xl mx-auto"> <section class="card flex items-center">
+            <img src="https://placehold.co/100x100/EBF4FF/3B82F6?text=교육국장&font=noto-sans-kr" alt="[노동조합 교육국장 캐릭터]" class="character-img rounded-full">
+            <div class="speech-bubble flex-1">
+                <p class="font-bold text-lg">안녕하세요, 조합원 동지 여러분! 노동조합 교육국장입니다. 👋</p>
+                <p>오늘은 조금 어렵게 느껴질 수 있지만, 우리의 권리와 직결된 중요한 제도! '복수노조 교섭창구 단일화'에 대해 함께 알아보는 시간을 갖겠습니다. 최대한 쉽고 재미있게 설명해 드릴 테니, 귀 기울여 주세요!</p>
+            </div>
+        </section>
+
+        <nav class="card toc mb-8">
+            <h2 class="text-xl font-bold text-blue-600 mb-3">📜 오늘 배울 내용 (목차)</h2>
+            <ul>
+                <li><a href="#section1" class="hover:pl-2">1. 🤔 이게 왜 생겼을까요? 복수노조와 창구 단일화 제도</a></li>
+                <li><a href="#section2" class="hover:pl-2">2. 🏛️ 헌법재판소는 왜 "괜찮다!"고 했을까요?</a></li>
+                <li><a href="#quiz-section" class="hover:pl-2">3. 💡 잠깐! OX 퀴즈로 점검해볼까요?</a></li>
+                <li><a href="#section3" class="hover:pl-2">4. 🤨 그래도... 정말 괜찮은 걸까요? (비판적 시각)</a></li>
+                <li><a href="#section4" class="hover:pl-2">5. 💡 그래서 우리에게 어떤 의미가 있을까요? (시사점)</a></li>
+                <li><a href="#section5" class="hover:pl-2">6. 🚀 앞으로 우리는 무엇을 해야 할까요?</a></li>
+            </ul>
+        </nav>
+
+        <section class="card" id="section1">
+            <h2 class="text-2xl font-bold text-blue-600 mb-4">1. 🤔 이게 왜 생겼을까요? 복수노조와 창구 단일화 제도</h2>
+            <div class="space-y-3 text-base md:text-lg">
+                <p>예전에는 한 회사에 노동조합이 여러 개 있는 것이 법으로 금지되었어요. 하지만 2011년 7월 1일부터는 한 사업장에도 여러 개의 노동조합(복수노조)을 만들 수 있게 되었답니다! 🥳</p>
+                <p><strong>하지만 잠깐!</strong> ✋ 여러 노조가 각자 회사와 교섭하려고 하면 너무 복잡하고 혼란스럽겠죠? 그래서 등장한 것이 바로 <strong class="text-red-500">'교섭창구 단일화'</strong> 제도입니다.</p>
+                <p>쉽게 말해, 회사와 교섭할 대표선수(교섭대표노동조합)를 하나로 정해서, 그 대표가 모든 조합원의 목소리를 모아 교섭하도록 하는 거예요.</p>
+                <div class="p-4 bg-sky-100 border-l-4 border-sky-500 text-sky-700 rounded-md mt-4">
+                    <p><strong class="font-semibold">✨ 핵심 포인트:</strong> 복수노조는 허용하되, 교섭은 한 창구로! 이것이 바로 교섭창구 단일화 제도의 기본 개념입니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="card" id="section2">
+            <h2 class="text-2xl font-bold text-blue-600 mb-4">2. 🏛️ 헌법재판소는 왜 "괜찮다!"고 했을까요? (합헌 결정 이유)</h2>
+            <p class="mb-3 text-base md:text-lg">"아니, 우리 노조가 직접 교섭하고 싶은데, 왜 대표를 따로 뽑아야 해? 이건 우리 권리 침해 아니야?" 라고 생각하실 수 있어요. 실제로 이런 문제로 헌법재판소까지 갔답니다.</p>
+            <p class="mb-3 text-base md:text-lg">헌법재판소는 2012년에 이 제도에 대해 "헌법에 어긋나지 않는다(합헌)"고 결정했어요. 그 이유를 한번 살펴볼까요?</p>
+
+            <div class="space-y-4">
+                <div class="p-4 bg-indigo-50 rounded-lg shadow">
+                    <h3 class="font-semibold text-lg text-indigo-700">1️⃣ 노동3권도 때로는 제한될 수 있어요.</h3>
+                    <p class="text-gray-700">헌법재판소는 "노동3권(단결권, 단체교섭권, 단체행동권)도 절대적인 권리는 아니에요. 국가 안전, 질서 유지, 공공의 이익을 위해서는 법으로 제한할 수 있습니다." 라고 했어요. 교섭창구 단일화도 이런 공익을 위한 제한 중 하나라고 본 거죠.</p>
+                </div>
+                <div class="p-4 bg-indigo-50 rounded-lg shadow">
+                    <h3 class="font-semibold text-lg text-indigo-700">2️⃣ 목적도 좋고, 방법도 괜찮아요!</h3>
+                    <p class="text-gray-700">이 제도의 목적은 여러 노조가 있을 때 교섭을 효율적으로 하고, 모든 조합원에게 통일된 근로조건을 만들어주기 위한 것이래요. 이런 목적은 정당하고, 창구를 하나로 만드는 방법도 괜찮다고 판단했어요.</p>
+                    <blockquote class="border-l-4 border-indigo-500 pl-4 italic text-gray-600 my-2 text-sm">
+                        "사업장 단위에서 복수노조와 사용자 간의 교섭 절차를 일원화하여 효율적이고 안정적인 교섭체계를 구축하고, ... 근로조건을 통일하고자 하는 데 그 목적이 있는바, 그 목적의 정당성은 인정되고..." (헌재 2011헌마338 결정문 중)
+                    </blockquote>
+                </div>
+                <div class="p-4 bg-indigo-50 rounded-lg shadow">
+                    <h3 class="font-semibold text-lg text-indigo-700">3️⃣ 작은 노조도 너무 걱정 마세요! (최소침해성)</h3>
+                    <p class="text-gray-700">작은 노조(소수노조)는 직접 교섭을 못해서 불리할 수 있지만, 대표노조를 뽑는 과정에 참여할 수 있고, 교섭 결과도 함께 누릴 수 있다고 봤어요. 또, 회사가 동의하면 따로 교섭할 수도 있고(자율교섭), 교섭단위를 나눌 수도 있고, 대표노조는 모든 조합원을 공정하게 대표해야 할 의무(공정대표의무)도 있어서 피해를 줄일 수 있다고 했어요.</p>
+                     <blockquote class="border-l-4 border-indigo-500 pl-4 italic text-gray-600 my-2 text-sm">
+                        "교섭창구단일화는 ... 단체교섭권의 실질적인 보장을 위해 요구되는 불가피한 제도라고 볼 수 있다." (헌재 2011헌마338 결정문 중)
+                    </blockquote>
+                </div>
+                <div class="p-4 bg-indigo-50 rounded-lg shadow">
+                    <h3 class="font-semibold text-lg text-indigo-700">4️⃣ 얻는 게 더 커요! (법익균형성)</h3>
+                    <p class="text-gray-700">결론적으로, 이 제도를 통해 얻는 '효율적이고 안정적인 교섭, 통일된 근로조건'이라는 공익이, 작은 노조가 잠시 교섭을 못하게 되는 것보다 더 크다고 판단한 거예요.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="card" id="quiz-section">
+            <h2 class="text-2xl font-bold text-blue-600 mb-4">3. 💡 잠깐! OX 퀴즈로 점검해볼까요?</h2>
+            <div class="space-y-4">
+                <div class="question-box">
+                    <p class="font-semibold text-base md:text-lg">1. 복수노조가 허용되면서, 모든 노조는 각자 회사와 직접 교섭할 수 있게 되었다.</p>
+                    <div class="mt-2">
+                        <button onclick="checkAnswer(this, false, 'X가 정답입니다! 교섭창구 단일화 제도 때문에 대표노조를 통해서 교섭해야 해요.')" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mr-2 transition-colors">O</button>
+                        <button onclick="checkAnswer(this, true, '정답입니다! 교섭창구 단일화 제도 때문에 대표노조를 통해서 교섭해야 해요. 그래서 X가 맞습니다.')" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded transition-colors">X</button>
+                    </div>
+                    <p class="answer-feedback mt-2"></p>
+                </div>
+                <div class="question-box">
+                    <p class="font-semibold text-base md:text-lg">2. 헌법재판소는 교섭창구 단일화 제도가 소수노조의 단체교섭권을 <strong class='text-red-500'>전혀</strong> 침해하지 않는다고 보았다.</p>
+                    <div class="mt-2">
+                        <button onclick="checkAnswer(this, false, 'X가 정답입니다! 헌재는 침해는 있지만, 최소한이고 불가피하다고 봤어요.')" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mr-2 transition-colors">O</button>
+                        <button onclick="checkAnswer(this, true, '정답입니다! 헌재는 침해는 있지만, 최소한이고 불가피하다고 봤어요. 그래서 X가 맞습니다.')" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded transition-colors">X</button>
+                    </div>
+                    <p class="answer-feedback mt-2"></p>
+                </div>
+                 <div class="question-box">
+                    <p class="font-semibold text-base md:text-lg">3. 교섭대표노조는 모든 조합원을 공정하게 대표할 의무가 있다.</p>
+                    <div class="mt-2">
+                        <button onclick="checkAnswer(this, true, '정답입니다! 이것이 바로 공정대표의무예요.')" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mr-2 transition-colors">O</button>
+                        <button onclick="checkAnswer(this, false, 'O가 정답입니다! 교섭대표노조는 공정대표의무를 가집니다.')" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded transition-colors">X</button>
+                    </div>
+                    <p class="answer-feedback mt-2"></p>
+                </div>
+            </div>
+        </section>
+
+        <section class="card" id="section3">
+            <h2 class="text-2xl font-bold text-blue-600 mb-4">4. 🤨 그래도... 정말 괜찮은 걸까요? (비판적 시각)</h2>
+            <p class="mb-3 text-base md:text-lg">헌법재판소의 결정에도 불구하고, 많은 전문가와 노동계에서는 여전히 이 제도에 대한 비판의 목소리가 높아요. 어떤 점들이 문제라고 하는지 알아봅시다.</p>
+
+            <div class="tabs-container">
+                <div class="flex border-b mb-0 flex-wrap"> <button class="tab-button active" onclick="openTab(event, 'criticism1')">비판 1️⃣: 교섭권은 누구의 것?</button>
+                    <button class="tab-button" onclick="openTab(event, 'criticism2')">비판 2️⃣: '공익'이 뭐길래?</button>
+                    <button class="tab-button" onclick="openTab(event, 'criticism3')">비판 3️⃣: 이게 최선인가?</button>
+                    <button class="tab-button" onclick="openTab(event, 'criticism4')">비판 4️⃣: 방법 제한 vs 권리 제한</button>
+                </div>
+
+                <div id="criticism1" class="tab-content active space-y-3 text-base md:text-lg">
+                    <h3 class="font-semibold text-lg text-red-600">단체교섭권, 그 주인은 바로 '노동조합' 자신! 🙋‍♀️🙋‍♂️</h3>
+                    <p>헌재는 단체교섭권이 '근로조건 향상'이라는 목표를 위한 '수단'이라서, 모든 노조에게 꼭 보장될 필요는 없다고 봤어요. 하지만 헌법은 분명히 "근로자는 근로조건의 향상을 위하여 자주적인 단결권·단체교섭권 및 단체행동권을 가진다." (헌법 제33조 제1항)고 말하고 있어요. 즉, 단체교섭권은 노동조합 고유의 권리라는 거죠!</p>
+                    <div class="p-3 bg-rose-50 border-l-4 border-rose-400 text-rose-700 rounded-md">
+                        <p>"수단이니까 좀 제한해도 돼" 라는 논리는 위험할 수 있어요. 각 노동조합의 교섭권은 그 자체로 존중받아야 합니다.</p>
+                    </div>
+                </div>
+
+                <div id="criticism2" class="tab-content space-y-3 text-base md:text-lg">
+                    <h3 class="font-semibold text-lg text-red-600">'공익'이라는 이름표, 너무 쉽게 붙인 거 아닌가요? 🏷️</h3>
+                    <p>헌재는 '효율적인 교섭'이나 '통일된 근로조건' 같은 이 제도의 목적을 바로 '공익'이라고 단정했어요. 하지만 이게 정말 헌법에서 말하는 '국가안전보장, 질서유지, 공공복리' 같은 공익에 해당하는지는 더 따져봐야 한다는 비판이 있어요.</p>
+                    <p>"회사가 교섭하기 편해지는 게 왜 공익이지?" 라는 의문이 들 수 있죠. 오히려 노동자의 권리를 보호하는 것이 더 큰 공익일 수 있습니다.</p>
+                    <div class="p-3 bg-rose-50 border-l-4 border-rose-400 text-rose-700 rounded-md">
+                        <p>단순히 '노사관계 안정'이나 '산업평화'만을 너무 강조하다 보면, 정작 중요한 노동자의 기본권이 뒷전으로 밀릴 수 있다는 우려가 있습니다.</p>
+                    </div>
+                </div>
+
+                <div id="criticism3" class="tab-content space-y-3 text-base md:text-lg">
+                    <h3 class="font-semibold text-lg text-red-600">이 방법밖에 없었을까요? 더 좋은 대안은 없었나? 🤷‍♂️🤷‍♀️</h3>
+                    <p>헌재는 지금의 '과반수 대표제'(조합원 수가 가장 많은 노조가 대표가 되는 방식)가 어쩔 수 없는 최선의 방법이라고 봤어요. 하지만 정말 그럴까요? 예를 들어, 각 노조의 조합원 수에 비례해서 교섭위원을 구성하는 '비례대표제' 같은 다른 방법은 충분히 고민해봤는지 의문이라는 지적이 있어요.</p>
+                    <p>또한, "회사가 동의하면 따로 교섭할 수 있다(자율교섭)"는 보완책이 오히려 작은 노조를 더 힘들게 만들 수 있다는 주장도 있습니다. 힘 있는 큰 노조만 혜택을 볼 수 있다는 거죠.</p>
+                    <div class="p-3 bg-rose-50 border-l-4 border-rose-400 text-rose-700 rounded-md">
+                        <p>교섭창구 단일화 과정에서 노조들끼리 다툼이 더 늘어날 수도 있고, 회사가 교섭 비용을 아끼려고 이 제도를 악용할 수도 있다는 점도 문제로 지적됩니다.</p>
+                    </div>
+                </div>
+
+                <div id="criticism4" class="tab-content space-y-3 text-base md:text-lg">
+                    <h3 class="font-semibold text-lg text-red-600">단순히 '방법'만 제한한 걸까요, 아니면 '권리 자체'를 제한한 걸까요? ⚖️</h3>
+                    <p>이 제도는 소수노조가 단체교섭을 하는 '방법'을 좀 바꾼 거라고 볼 수도 있지만, 어쩌면 일정 조건을 만족해야만 교섭을 할 수 있게 만들어서 '단체교섭권이라는 기본권 자체를 행사할 수 있느냐 없느냐'를 결정짓는 규정으로 볼 수도 있어요.</p>
+                    <p>만약 그렇다면, 헌재가 다른 대안(예: 소수노조에게도 일정 부분 교섭권을 주는 방안)을 충분히 고려하지 않고 "이 방법밖에 없어!"라고 한 것은 문제가 있다는 비판이 나옵니다.</p>
+                    <div class="p-3 bg-rose-50 border-l-4 border-rose-400 text-rose-700 rounded-md">
+                        <p>작은 목소리도 존중받고, 다양한 의견이 교섭에 반영될 수 있는 방안을 더 적극적으로 찾아야 한다는 것이죠.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="card" id="section4">
+            <h2 class="text-2xl font-bold text-blue-600 mb-4">5. 💡 그래서 우리에게 어떤 의미가 있을까요? (시사점)</h2>
+            <div class="space-y-3 text-base md:text-lg">
+                <p>이 제도는 우리 노동조합 활동에 직접적인 영향을 미칩니다. 몇 가지 중요한 점을 짚어볼게요.</p>
+                <ul class="list-disc list-inside space-y-2 pl-4">
+                    <li><strong>소수노조의 어려움:</strong> 조합원 수가 적은 노조는 직접 교섭하기 어려워 목소리를 내기 힘들 수 있어요. <strong class="text-red-500">교섭대표노조가 되지 못하면 사실상 교섭권을 행사하기 어려운 현실</strong>입니다.</li>
+                    <li><strong>기업별 교섭 고착화:</strong> 이 제도는 주로 한 회사 안에서의 교섭을 다루다 보니, 여러 회사를 아우르는 산별노조나 지역노조의 활동을 위축시킬 수 있다는 비판이 있어요. 즉, <strong class="text-red-500">기업 담장을 넘어서는 연대와 교섭을 어렵게 만들 수 있습니다.</strong></li>
+                    <li><strong>노노 갈등 심화 가능성:</strong> 교섭대표 자리를 차지하기 위해 노조들끼리 경쟁하거나 갈등이 생길 수 있어요.</li>
+                    <li><strong>사용자의 제도 악용 우려:</strong> 회사가 특정 노조를 밀어주거나, 교섭을 지연시키는 수단으로 이 제도를 악용할 수도 있습니다.</li>
+                    <li><strong>'1사 1협약' 관행의 문제:</strong> "한 회사에는 하나의 단체협약만 있어야 한다"는 생각이 노동자의 다양한 요구를 반영하지 못하고, 오히려 노동기본권을 침해할 수 있다는 점을 기억해야 합니다.</li>
+                </ul>
+                <div class="p-4 bg-amber-100 border-l-4 border-amber-500 text-amber-700 rounded-md mt-4">
+                    <p><strong class="font-semibold">📢 기억합시다!</strong> 복수노조 허용은 노동조합을 자유롭게 만들 권리를 보장하는 것이지, 교섭창구 단일화라는 '족쇄'를 달기 위한 것이 아니었어요. 제도의 원래 취지를 잘 살려서 노동자의 권리가 최대한 보장되는 방향으로 운영되어야 합니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="card" id="section5">
+            <h2 class="text-2xl font-bold text-blue-600 mb-4">6. 🚀 앞으로 우리는 무엇을 해야 할까요?</h2>
+            <div class="space-y-3 text-base md:text-lg">
+                <p>2021년에 노조법이 일부 바뀌었지만, 교섭창구 단일화 제도의 큰 틀은 그대로 유지되고 있어요. 물론, 회사가 동의하면 따로 교섭할 때 성실하게 교섭해야 하고 차별하면 안 된다는 내용 등이 추가되긴 했지만, 근본적인 문제점은 여전하다는 의견이 많습니다.</p>
+                <p>우리는 다음과 같은 질문을 계속 던져야 합니다:</p>
+                <ul class="list-disc list-inside space-y-2 pl-4 mb-3">
+                    <li>이 제도를 통해 지키려는 '공익'이 과연 무엇일까요? 🤔</li>
+                    <li>정말 이 방법만이 최선일까요? 작은 노조의 목소리를 더 잘 반영할 방법은 없을까요? 🤷</li>
+                    <li>과거 권위주의 시대의 잔재가 여전히 우리 노조법에 남아있는 것은 아닐까요? 낡은 틀을 깨야 합니다! 🔨</li>
+                </ul>
+                <div class="p-4 bg-teal-100 border-l-4 border-teal-500 text-teal-700 rounded-md">
+                    <p><strong class="font-semibold">🤝 우리의 역할:</strong></p>
+                    <ul class="list-disc list-inside mt-2">
+                        <li>이 제도에 대해 꾸준히 관심을 갖고 문제점을 인식해야 합니다.</li>
+                        <li>교섭대표노조는 공정대표의무를 철저히 이행하여 모든 조합원의 권익을 위해 노력해야 합니다.</li>
+                        <li>소수노조라 할지라도 적극적으로 목소리를 내고, 연대하여 우리의 권리를 지켜나가야 합니다.</li>
+                        <li>더 나아가, 이 제도가 진정으로 모든 노동자의 단결권과 교섭권을 보장하는 방향으로 개선될 수 있도록 함께 힘을 모아야 합니다! 🔥</li>
+                    </ul>
+                </div>
+                 <p class="mt-4 font-semibold">오늘 내용이 조금 어려우셨을 수도 있지만, 우리의 소중한 권리를 지키기 위해 꼭 알아야 할 내용입니다. 궁금한 점이 있으시면 언제든지 노동조합에 문의해주세요! 😊</p>
+            </div>
+        </section>
+
+        <footer class="text-center p-6 mt-8 bg-gray-700 text-white">
+            <p>&copy; <span id="year"></span> 노동조합 교육국. 모든 권리 보유.</p>
+            <p class="text-sm">본 자료는 조합원 교육을 위해 제작되었습니다.</p>
+        </footer>
+    </main>
+
+    <script>
+        // 현재 연도 자동 설정
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // OX 퀴즈 정답 확인 함수
+        function checkAnswer(button, isCorrect, feedbackText) {
+            const feedbackEl = button.parentElement.nextElementSibling;
+            const buttons = button.parentElement.querySelectorAll('button');
+            
+            buttons.forEach(btn => {
+                btn.disabled = true; // 모든 버튼 비활성화
+                btn.classList.add('opacity-70', 'cursor-not-allowed'); // 비활성화 시 시각적 피드백
+            });
+
+            if (isCorrect) {
+                feedbackEl.textContent = "👍 " + feedbackText;
+                feedbackEl.className = "answer-feedback mt-2 correct-answer"; // 정답 스타일
+                button.classList.remove('bg-blue-500', 'bg-red-500', 'hover:bg-blue-600', 'hover:bg-red-600');
+                button.classList.add('bg-green-500'); // 정답 버튼 강조
+            } else {
+                feedbackEl.textContent = "🤔 " + feedbackText;
+                feedbackEl.className = "answer-feedback mt-2 wrong-answer"; // 오답 스타일
+                // 오답 선택 시에도 정답 버튼을 찾아 강조 (선택사항)
+                buttons.forEach(btn => {
+                    // 정답 버튼을 찾아 초록색으로 표시 (사용자가 어떤 버튼을 눌렀는지와 별개로)
+                    // 이 부분은 사용자가 어떤 버튼을 눌렀는지에 따라 isCorrect가 결정되므로,
+                    // isCorrect가 false일 때 정답 버튼을 찾는 로직이 필요.
+                    // 여기서는 간단히 선택한 버튼만 처리.
+                });
+            }
+        }
+
+        // 탭 기능 함수
+        function openTab(event, tabName) {
+            let i, tabcontent, tabbuttons;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+                tabcontent[i].classList.remove("active");
+            }
+            tabbuttons = document.getElementsByClassName("tab-button");
+            for (i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].classList.remove("active");
+            }
+            document.getElementById(tabName).style.display = "block";
+            document.getElementById(tabName).classList.add("active");
+            event.currentTarget.classList.add("active");
+        }
+
+        // 스크롤 맨 위로 가기 버튼 기능
+        const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+        window.onscroll = function() {
+            // 스크롤 위치가 200px 이상이면 버튼 표시
+            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                scrollToTopBtn.style.display = "block";
+            } else {
+                scrollToTopBtn.style.display = "none";
+            }
+        };
+
+        scrollToTopBtn.onclick = function() {
+            // 클릭 시 맨 위로 스크롤
+            document.body.scrollTop = 0; // Safari
+            document.documentElement.scrollTop = 0; // Chrome, Firefox, IE, Opera
+        };
+
+        // 목차 링크 부드러운 스크롤 (이미 CSS로 scroll-behavior: smooth; 적용했지만, JS로도 구현 가능)
+        document.querySelectorAll('.toc a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    // 헤더 높이만큼 오프셋 조정 (고정 헤더가 있는 경우)
+                    const headerOffset = document.querySelector('header').offsetHeight;
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: "smooth"
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
